@@ -1,0 +1,154 @@
+﻿@model IPagedList<FYP_App.Models.Complaint_DB>
+@using PagedList.Mvc;
+@using PagedList;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/UserLayOut.cshtml";
+}
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+
+
+    <link href="https://unpkg.com/bootstrap-table@1.18.1/dist/bootstrap-table.min.css" rel="stylesheet">
+
+    <script src="https://unpkg.com/bootstrap-table@1.18.1/dist/bootstrap-table.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+
+    <script src="~/Content/sweetalert/sweetalert2.min.js"></script>
+    <script src="~/Content/sweetalert/sweetalert2.js"></script>
+    <script src="~/Content/sweetalert/sweetalert2.all.min.js"></script>
+    <script src="~/Content/sweetalert/sweetalert2.all.js"></script>
+    <link href="~/Content/sweetalert/sweetalert2.min.css" rel="stylesheet" />
+    <link href="~/Content/sweetalert/sweetalert2.css" rel="stylesheet" />
+    <style>
+        .pagination {
+            background-color: #EDEDED;
+            color: black;
+            float: left;
+            text-decoration: none;
+        }
+
+            .pagination a {
+                color: black;
+                float: left;
+                padding: 8px 16px;
+                text-decoration: none;
+            }
+    </style>
+</head>
+<body>
+    <br />
+    <br />
+    <div id="openpopup" style="display:none"></div>
+
+    <button onclick="document.location='@Url.Action("Create","Complaint")'" class="btn btn-success" style="margin-bottom:10px"><i class="fa fa-plus"></i>Add New </button>
+
+
+    <table class="table table-success table-striped">
+        <thread>
+            <tr>
+
+                <th>
+                    Complaint ID
+
+                </th>
+                <th>
+                    Date
+                </th>
+                <th>
+                    Subject
+                </th>
+                <th>
+                    User Name
+                </th>
+                <th>
+                    Status
+                </th>
+
+                <th>
+                    Operations
+                </th>
+
+
+            </tr>
+        </thread>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Complaint_ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Subject)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+
+                <td>
+                    <a href="@Url.Action("Details","Complaint", new { id = item.Complaint_ID })" class="btn btn-mini btn-info icon-edit bigger-10"><img src="https://img.icons8.com/ultraviolet/24/000000/ring-details.png" /></a> |
+
+                    <a href="@Url.Action("Delete","Complaint", new { id = item.Complaint_ID })" class="btn btn-mini btn-info icon-edit bigger-10" onclick = "return confirm('Are you sure you to delete this Record?');"><img src="https://img.icons8.com/ios-filled/24/000000/delete-forever.png" /></a>
+
+                </td>
+            </tr>
+        }
+
+    </table>
+    @Html.PagedListPager(Model, i => Url.Action("Index", "Complaint", new { i }))
+
+    <link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+    <script>
+       
+        function dellpopups() {
+            Swal.fire({
+                title: "Delete Successully !!",
+                text: "",
+                icon: "Success",
+
+                dangerMode: true,
+            })
+
+        }
+        function createpopup() {
+            var x = $("#openpopup");
+            x.load('/Complaint/Creates', function () {
+                x.dialog({
+                    show:
+                        { effect: "slideToggle", duration: 500 },
+                    hide:
+                        { effect: "slideToggle", duration: 500 },
+
+                    //modal: true,
+                    width: 650,
+                    height: 600,
+                    title: "Create Complaint",
+                    resizeable: false
+
+                });
+
+            });
+
+
+
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+﻿@model FYP_App.Models.Complaint_DB
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/AdminLayOut.cshtml";
+}
+
+<p style="color:lightseagreen;"><b>Update Status of Complaint !!</b></p>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Complaint_ID)
+    <div class="form-horizontal">
+        
+        <hr />
+        <table class="table table-success table-striped">
+            <tbody>
+                <tr>
+                    <th>Complaint ID</th>
+                    <th>Created On</th>
+                    <th>Complaint Subject</th>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.EditorFor(model => model.Complaint_ID, new { htmlAttributes = new { @class = "form-control" } })
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { @class = "form-control" } })
+
+                    </td>
+                </tr>
+                <tr>
+                    <th>User Name</th>
+                    <th>User Email</th>
+                    <th>Complaint Status</th>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.EditorFor(model => model.User_Name, new { htmlAttributes = new { @class = "form-control" } })
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.User_Email, new { htmlAttributes = new { @class = "form-control" } })
+                    </td>
+                    <td>
+
+                        @Html.DropDownListFor(model => model.Status, new List<SelectListItem>
+                                           {
+
+                                            new SelectListItem{Text="Solved", Value="Solved"},
+                               new SelectListItem{Text="Pending", Value="Pending"} },
+                               "Update Cpmplaint Status ",
+                               new { @class = "form-control" })
+                      
+                    </td>
+                </tr>
+
+
+
+
+
+
+
+
+            </tbody>
+        </table>
+        <table class="table table-success table-striped">
+            <tbody>
+                <tr>
+                    <th>Complaint Description</th>
+
+
+                </tr>
+                <tr>
+                    <td>
+                        @Html.TextAreaFor(model => model.Description, new { cols = "95", rows = "5" })
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Update" class="btn btn-success" style="margin-bottom:10px"/>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    <a href="@Url.Action("Admin_Index","Complaint")" class="btn btn-mini btn-info icon-edit bigger-10"><img src="https://img.icons8.com/flat_round/30/000000/back--v1.png" />Back to List </a>
+</div>

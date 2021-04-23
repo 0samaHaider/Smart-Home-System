@@ -1,0 +1,79 @@
+﻿@model FYP_App.Models.Complaint_DB
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/UserLayOut.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <p style="color:lightseagreen;"><b>Create Your Complaint !!</b></p>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+
+            <div class="col-md-10">
+                <label><b>User Name </b> </label>
+                @Html.TextBoxFor(model => model.User_Name, new { @class = "form-control", @Value = ViewBag.name, @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.User_Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <label><b>User Email</b> </label>
+
+                @Html.TextBoxFor(model => model.User_Email, new { @class = "form-control", @Value = ViewBag.email, @readonly = "readonly" })
+
+                @Html.ValidationMessageFor(model => model.User_Email, "", new { @class = "text-danger" })
+
+
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+
+                @Html.HiddenFor(model => model.Date, new { @class = "form-control", @Value = ViewBag.date, @readonly = "readonly" })
+
+                @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+
+
+            </div>
+        </div>
+        <div class="form-group">
+
+            <div class="col-md-10">
+                <label><b>Subject</b> </label>
+                @Html.TextBoxFor(model => model.Subject, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <label><b>Complaint Description</b> </label>
+                <br />
+                @Html.TextAreaFor(model => model.Description, new { cols = "125", rows = "5" })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-success" style="margin-bottom:10px" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    <a href="@Url.Action("Index","Complaint")" class="btn btn-mini btn-info icon-edit bigger-10" ><img src="https://img.icons8.com/flat_round/30/000000/back--v1.png"/>Back to List </a>
+
+</div>

@@ -1,0 +1,96 @@
+﻿@model FYP_App.Models.Crudclass
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="~/Scripts/jquery-1.9.1.js"></script>
+@*@Html.HiddenFor(model => model.emid)*@
+<br />
+
+<div class="form-group">
+    <label class=" font-weight-bold">User's Name</label><br />
+    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.Name)
+</div>
+
+<div class="form-group">
+    <label class=" font-weight-bold">User's Phone Number</label>
+    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+</div>
+
+<div class="form-group">
+    <label class=" font-weight-bold">Account Password</label>
+    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+
+</div>
+
+<div class="form-group">
+    <label class=" font-weight-bold">Account Status	</label>
+
+
+    @Html.DropDownListFor(model => model.Status, new List<SelectListItem>
+                       {
+
+                           new SelectListItem{Text="Approved", Value="Approved"},
+                           new SelectListItem{Text="Dis-Approved", Value="Dis-Approved"} },
+                           "Update Account Status ",
+                           new { @class = "form-control" })
+
+</div>
+<p>
+    <div class="col-md-offset-2 col-md-10">
+        <input type="submit" value="save" class="btn btn-success" style="margin-bottom:10px" onclick="savedetails()" />
+    </div>
+
+</p>
+
+<div hidden>
+    id:@Html.EditorFor(model => model.ID)
+    <br />
+
+    @*name:@Html.EditorFor(model => model.Name)*@
+
+    <br />
+    phone:@Html.EditorFor(model => model.Phone)
+    <br />
+    password:@Html.EditorFor(model => model.Password)
+    <br />
+    Status:@Html.EditorFor(model => model.Status)
+    <br /><p>
+    <input type="button" value="save" onclick="savedetails()" />
+
+</p>
+</div>
+
+
+
+
+<script type="text/javascript">
+    function savedetails() {
+
+        var ID = $("#ID").val();
+        var Name = $("#Name").val();
+        var Password = $("#Password").val();
+        var Phone = $("#Phone").val();
+        var Status = $("#Status").val();
+        var insertem = { "ID": ID, "Name": Name, "Password": Password, "Phone": Phone, "Status": Status };
+
+        $.post('/UserInfo/Update', insertem,
+            function (data) { if (data) { location = location.href; } }, 'json');
+
+        confirm("Are You Sure to Update This ?");
+    } $.ajax({
+
+        type: "POST",
+        url: "/Test/Index",
+        data: myformdata,
+        success: function () {
+            $("#loaderDiv").hide();
+            $("#myModal").modal("hide");
+
+        }
+
+    })
+
+</script>

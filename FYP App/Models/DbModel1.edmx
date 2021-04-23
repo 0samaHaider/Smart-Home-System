@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FYPModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Complaint_DB">
+          <Key>
+            <PropertyRef Name="Complaint_ID" />
+          </Key>
+          <Property Name="Complaint_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="nvarchar" MaxLength="50" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="30" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="User_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="User_Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK_Complaint_DB_Complaint_DB">
+          <End Role="Complaint_DB" Type="Self.Complaint_DB" Multiplicity="1" />
+          <End Role="Complaint_DB1" Type="Self.Complaint_DB" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Complaint_DB">
+              <PropertyRef Name="Complaint_ID" />
+            </Principal>
+            <Dependent Role="Complaint_DB1">
+              <PropertyRef Name="Complaint_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FYPModel1StoreContainer">
+          <EntitySet Name="Complaint_DB" EntityType="Self.Complaint_DB" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Complaint_DB_Complaint_DB" Association="Self.FK_Complaint_DB_Complaint_DB">
+            <End Role="Complaint_DB" EntitySet="Complaint_DB" />
+            <End Role="Complaint_DB1" EntitySet="Complaint_DB" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FYPModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Complaint_DB">
+          <Key>
+            <PropertyRef Name="Complaint_ID" />
+          </Key>
+          <Property Name="Complaint_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Subject" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="User_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="User_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Complaint_DB1" Relationship="Self.FK_Complaint_DB_Complaint_DB" FromRole="Complaint_DB" ToRole="Complaint_DB1" />
+          <NavigationProperty Name="Complaint_DB2" Relationship="Self.FK_Complaint_DB_Complaint_DB" FromRole="Complaint_DB1" ToRole="Complaint_DB" />
+        </EntityType>
+        <Association Name="FK_Complaint_DB_Complaint_DB">
+          <End Role="Complaint_DB" Type="Self.Complaint_DB" Multiplicity="1" />
+          <End Role="Complaint_DB1" Type="Self.Complaint_DB" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Complaint_DB">
+              <PropertyRef Name="Complaint_ID" />
+            </Principal>
+            <Dependent Role="Complaint_DB1">
+              <PropertyRef Name="Complaint_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DbModel1s" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Complaint_DB" EntityType="Self.Complaint_DB" />
+          <AssociationSet Name="FK_Complaint_DB_Complaint_DB" Association="Self.FK_Complaint_DB_Complaint_DB">
+            <End Role="Complaint_DB" EntitySet="Complaint_DB" />
+            <End Role="Complaint_DB1" EntitySet="Complaint_DB" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FYPModel1StoreContainer" CdmEntityContainer="DbModel1s">
+          <EntitySetMapping Name="Complaint_DB">
+            <EntityTypeMapping TypeName="FYPModel1.Complaint_DB">
+              <MappingFragment StoreEntitySet="Complaint_DB">
+                <ScalarProperty Name="Complaint_ID" ColumnName="Complaint_ID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+                <ScalarProperty Name="User_Email" ColumnName="User_Email" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

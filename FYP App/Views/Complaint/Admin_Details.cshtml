@@ -1,0 +1,71 @@
+﻿@model FYP_App.Models.Complaint_DB
+
+@{
+    ViewBag.Title = "Admin_Details";
+    Layout = "~/Views/AdminLayOut.cshtml";
+}
+
+<br />
+<br />
+<h5 style="color:lightseagreen;"><b>Detail:-</b></h5>
+
+<hr />
+
+<h2></h2>
+<table class="table table-success table-striped">
+    <tbody>
+        <tr>
+            <th>Complaint ID</th>
+            <th>Created On</th>
+            <th>Complaint Subject</th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.Complaint_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Subject)
+
+            </td>
+        </tr>
+        <tr>
+            <th>User Name</th>
+            <th>User Email</th>
+            <th>Complaint Status</th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.User_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.User_Email)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Status)
+
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+<table class="table table-success table-striped">
+    <tbody>
+        <tr>
+            <th>Complaint Description</th>
+            <td>
+                @Html.DisplayFor(model => model.Description)
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div>
+    <a href="@Url.Action("Admin_Index","Complaint")" class="btn btn-mini btn-info icon-edit bigger-10"><img src="https://img.icons8.com/flat_round/30/000000/back--v1.png" />Back to List </a>
+
+</div>
+
+

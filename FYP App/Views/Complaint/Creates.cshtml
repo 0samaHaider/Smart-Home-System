@@ -1,0 +1,72 @@
+﻿@model FYP_App.Models.Complaint_DB
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="~/Scripts/jquery-1.9.1.js"></script>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div @*style="background-color:#E6E6FA"*@>
+        <form>
+            <div class="form-group">
+                <label class=" font-weight-bold">User's Name</label>
+                @Html.TextBoxFor(model => model.User_Name, new { @class = "form-control", @Value = ViewBag.name, @readonly = "readonly" })
+            </div>
+            <div class="form-group">
+                <label class=" font-weight-bold">User's Email</label>
+                @Html.TextBoxFor(model => model.User_Email, new { @class = "form-control", @Value = ViewBag.email, @readonly = "readonly" })
+            </div>
+            @Html.HiddenFor(model => model.Date, new { @class = "form-control", @Value = ViewBag.date, @readonly = "readonly" })
+
+            <div class="form-group">
+                <label class=" font-weight-bold">Subject</label>
+                @Html.TextBoxFor(model => model.Subject, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label class=" font-weight-bold">Complaint Description </label>
+                @Html.TextAreaFor(model => model.Description, new { cols = "125", rows = "5" })
+            </div>
+
+
+        </form>
+
+
+
+        <p>
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Creates" class="btn btn-success" style="margin-bottom:10px" onclick="savedetails()" />
+            </div>
+
+        </p>
+    </div>
+}
+    <script type="text/javascript">
+        function savedetails() {
+            var Complaint_ID = $("#Complaint_ID").val();
+            var @ViewBag.name = $("#Name").val();
+            var User_Email = $("#User_Email").val();
+            var Subject = $("#Subject").val();
+            var Description = $("#Description").val();
+
+            var insertem = { "Complaint_ID": Complaint_ID, "Name": @ViewBag.name, "User_Email": User_Email, "Subject": Subject, "Description": Description };
+
+            $.post('/Complaint/Creates', insertem,
+                function (data) { if (data) { location = location.href; } }, 'json');
+
+        }
+        //$.ajax({
+
+        //    type: "POST",
+        //    url: "/UserVerify/Creates",
+        //    data: myformdata,
+        //    success: function () {
+        //        $("#loaderDiv").hide();
+        //        $("#myModal").modal("hide");
+
+        //    }
+
+        //})
+    </script>
