@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 using PagedList;
 using System.Net.Mail;
 using System.Net;
+using FYP_App.Services;
 
 namespace FYP_App.Controllers
 {
@@ -45,23 +46,8 @@ namespace FYP_App.Controllers
                 {
                     db.Entry(complaint).State = EntityState.Modified;
                     db.SaveChanges();
-                    MailMessage msg = new MailMessage();
-                    msg.From = new MailAddress("autoislamabad @gmail.com");
-                    msg.To.Add(complaint.User_Email);
-                    msg.Subject = "Complaint Update";
-                    msg.Body = "Dear User,Your Complaint ID = " + complaint.Complaint_ID + " has been seen by admin.Your complaint status is updated to " + complaint.Status + ".";
-                    using (SmtpClient client = new SmtpClient())
-                    {
-                        client.EnableSsl = true;
-                        client.UseDefaultCredentials = false;
-                        client.Credentials = new NetworkCredential("autoislamabad@gmail.com",
-                       "iot3base4");
-                        client.Host = "smtp.gmail.com";
-                        client.Port = 587;
-                        client.DeliveryMethod = SmtpDeliveryMethod.Network;
-                        client.Send(msg);
-                    }
-
+                    Email_Sender email_Sender = new Email_Sender();
+                    email_Sender.Complaint_Email(complaint.User_Email, complaint.Complaint_ID, complaint.Status);               
                     return RedirectToAction("Admin_Index");
                 }
             }

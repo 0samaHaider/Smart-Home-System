@@ -8,6 +8,7 @@ using FYP_App.Controllers;
 using System.Data.SqlClient;
 using System.Net.Mail;
 using System.Net;
+using FYP_App.Services;
 
 namespace FYP_App.Controllers
 {
@@ -55,24 +56,8 @@ namespace FYP_App.Controllers
 
                         dbModel.Sign_Up.Add(sign_Up);
                         dbModel.SaveChanges();
-                        MailMessage msg = new MailMessage();
-                        msg.From = new MailAddress("autoislamabad@gmail.com");
-                        msg.To.Add(sign_Up.Email);
-                        msg.Subject = "Account Created";
-                        msg.Body = "Dear User,Your Account Created Successfully, Wait for Admin approval  !!";
-                        //msg.Priority = MailPriority.High; 
-                        using (SmtpClient client = new SmtpClient())
-                        {
-                            client.EnableSsl = true;
-                            client.UseDefaultCredentials = false;
-                            client.Credentials = new NetworkCredential("autoislamabad@gmail.com",
-                           "iot3base4");
-                            client.Host = "smtp.gmail.com";
-                            client.Port = 587;
-                            client.DeliveryMethod = SmtpDeliveryMethod.Network;
-                            client.Send(msg);
-
-                        }
+                        Email_Sender email_Sender = new Email_Sender();
+                        email_Sender.SignUp_Email(sign_Up.Email);
                         ViewBag.SuccessMessage = "Account Successfully ✔️ Wait for approval  !!";
                         ModelState.Clear();
                     }
