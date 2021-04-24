@@ -12,6 +12,7 @@ using FireSharp.Interfaces;
 using FireSharp.Response;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using FYP_App.Services;
 
 namespace FYP_App.Controllers
 {
@@ -105,31 +106,14 @@ namespace FYP_App.Controllers
             da.Fill(ds);
             if (ds.Tables[0].Rows.Count > 0)
             {
-                password = ds.Tables[0].Rows[0]["Password"].ToString(); MailMessage msg = new MailMessage();
-                msg.From = new MailAddress("autoislamabad@gmail.com");
-                msg.To.Add(login.Name);
-                msg.Subject = "Your Password";
-                msg.Body = "Dear User, Your Password is " + password;
-
-                using (SmtpClient client = new SmtpClient())
-                {
-                    client.EnableSsl = true;
-                    client.UseDefaultCredentials = false;
-                    client.Credentials = new NetworkCredential("autoislamabad@gmail.com",
-                   "iot3base4");
-                    client.Host = "smtp.gmail.com";
-                    client.Port = 587;
-                    client.DeliveryMethod = SmtpDeliveryMethod.Network;
-                    client.Send(msg);
-                    ViewBag.SuccessMessage = "Check Your Email Inbox ✔️.";
-                }
-
-
+                password = ds.Tables[0].Rows[0]["Password"].ToString();
+                Email_Sender email_Sender = new Email_Sender();
+                email_Sender.Password_Email(login.Name , password);
+                ViewBag.SuccessMessage = "Check Your Email Inbox ✔️.";
             }
             else
             {
                 ViewBag.errors = "Invalid Email ❌";
-
             }
 
             return View("ForgotPassword");
