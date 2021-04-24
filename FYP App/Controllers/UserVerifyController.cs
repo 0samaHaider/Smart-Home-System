@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Data.Entity;
 using FYP_App.Models;
 using PagedList;
+using FYP_App.Services;
 
 namespace FYP_App.Controllers
 {
@@ -127,6 +128,7 @@ namespace FYP_App.Controllers
             empclass.Password = emp.Password;
             empclass.Phone = emp.Phone;
             empclass.Status = emp.Status;
+            empclass.Email = emp.Email;
             return PartialView(empclass);
         }
         [HttpPost]
@@ -140,7 +142,10 @@ namespace FYP_App.Controllers
             emptb.Password = emp.Password;
             emptb.Phone = emp.Phone;
             emptb.Status = emp.Status;
+            emptb.Email = emp.Email;
             sd.SaveChanges();
+            Email_Sender email_Sender = new Email_Sender();
+            email_Sender.Profile_Update(emptb.Email);
             return Json(emptb, JsonRequestBehavior.AllowGet);
         }
         #endregion

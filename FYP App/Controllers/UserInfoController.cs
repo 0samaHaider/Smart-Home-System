@@ -56,6 +56,7 @@ namespace FYP_App.Controllers
             Crudclass empclass = new Crudclass();
             empclass.Name = emp.Name;
             empclass.Password = emp.Password;
+            empclass.Email = emp.Email;
             empclass.Phone = emp.Phone;
             empclass.Status = emp.Status;
             return PartialView(empclass);
@@ -69,6 +70,7 @@ namespace FYP_App.Controllers
             Sign_Up emptb = sd.Sign_Up.Where(x => x.ID == empp).FirstOrDefault();
             Crudclass empclass = new Crudclass();
             emptb.Name = emp.Name;
+            emptb.Email = emp.Email;
             emptb.Password = emp.Password;
             emptb.Phone = emp.Phone;
             emptb.Status = emp.Status;

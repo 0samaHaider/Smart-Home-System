@@ -13,7 +13,11 @@
     @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
     @Html.ValidationMessageFor(model => model.Name)
 </div>
+<div class="form-group">
+    <label class=" font-weight-bold">User's Email</label>
+    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
 
+</div>
 <div class="form-group">
     <label class=" font-weight-bold">User's Phone Number</label>
     @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
@@ -57,7 +61,9 @@
     password:@Html.EditorFor(model => model.Password)
     <br />
     Status:@Html.EditorFor(model => model.Status)
-    <br /><p>
+    <br />
+    Status:@Html.EditorFor(model => model.Email)
+    <p>
         <input type="button" value="save" onclick="savedetails()" />
 
     </p>
@@ -70,7 +76,9 @@
         var Password = $("#Password").val();
         var Phone = $("#Phone").val();
         var Status = $("#Status").val();
-        var insertem = { "ID": ID, "Name": Name, "Password": Password, "Phone": Phone, "Status": Status };
+        var Email = $("#Email").val();
+
+        var insertem = { "ID": ID, "Name": Name, "Password": Password, "Phone": Phone, "Status": Status, "Email": Email };
 
         $.post('/UserVerify/Editt', insertem,
             function (data) { if (data) { location = location.href; } }, 'json');

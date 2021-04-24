@@ -17,7 +17,7 @@ namespace FYP_App.Models
     {
         public int ID { get; set; }
         [Required(ErrorMessage = "Name is Requirde"), MaxLength(20)]
-        [RegularExpression(@"^[A-Z][a-zA-Z]*$", ErrorMessage = "Name is not in Format.")]
+        //[RegularExpression(@"^([a-zA-Z ]*?)\s|([a-zA-Z]*)$", ErrorMessage = "Name is not in Format.")]
         public string Name { get; set; }
 
 

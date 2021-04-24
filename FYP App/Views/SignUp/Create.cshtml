@@ -1,176 +1,103 @@
 ﻿@model FYP_App.Models.Sign_Up
 
 
-
-<style>
-
-    .note {
-        text-align: center;
-        height: 80px;
-        background: -webkit-linear-gradient(left, #0072ff, #8811c5);
-        color: #fff;
-        font-weight: bold;
-        line-height: 80px;
-    }
-
-    .form-content {
-        padding: 5%;
-        border: 1px solid #ced4da;
-        margin-bottom: 2%;
-    }
-
-    .form-control {
-        border-radius: 1.5rem;
-    }
-
-    .btnSubmit {
-        border: none;
-        border-radius: 1.5rem;
-        padding: 1%;
-        width: 20%;
-        cursor: pointer;
-        background: #0062cc;
-        color: #fff;
-    }
-
-    .btnSubmits {
-        border: none;
-        border-radius: 1.5rem;
-        padding: 1%;
-        width: 10%;
-        cursor: pointer;
-        background: black;
-        color: #fff;
-    }
-
- 
-</style>
-
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="~/Content/sweetalert/sweetalert2.min.js"></script>
-    <script src="~/Content/sweetalert/sweetalert2.js"></script>
-    <script src="~/Content/sweetalert/sweetalert2.all.min.js"></script>
-    <script src="~/Content/sweetalert/sweetalert2.all.js"></script>
-    <link href="~/Content/sweetalert/sweetalert2.min.css" rel="stylesheet" />
-    <link href="~/Content/sweetalert/sweetalert2.css" rel="stylesheet" />
-    <link href="~/Content/preloader.css" rel="stylesheet" />
-    <title>Sign Up</title>
-</head>
-<body style="background-color:cadetblue">
-    <div class="loader">
-        <img src="~/Content/200.gif"  alt="Loading..." />
-    </div>
-    <div class="login-dark">
-
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
-
-            <div class="container register-form">
-                <div class="note">
-
-                    <p>Wellcome !! Create Your Account .</p>
-
-
-                </div>
-
-                <div class="form-content">
+<link href="~/Content/SignUp.css" rel="stylesheet" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Custom Theme files -->
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- //Custom Theme files -->
+<!-- web font -->
+<link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+<body>
+<!-- //web font -->
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <!-- main -->
+    <div class="main-w3layouts wrapper">
+        <h1>Create Your Account</h1>
+        <div class="main-agileinfo">
+            <div class="agileits-top">
+                <form class="form-group">
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div class="form-group">
-                        <b>
-                            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-                        </b>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Your Name *", required = "required", type = "text" } })
-                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
 
-                    <div class="form-group">
-                        <b>
-                            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-                        </b>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Your Email *", required = "required", type = "Email" } })
-                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Your Name *", required = "required", type = "text" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    <br />
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Your Email *", required = "required", type = "Email" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    <br />
 
-                    <div class="form-group">
-                        <b>
-                            @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control", @placeholder = "Your Phone Number *", required = "required", type = "text" } })
+                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                    <br />
 
-                        </b>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control", @placeholder = "Your Mobile Number *", required = "required", type = "Number" } })
-                            @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <b>
-                            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Your Password *", required = "required", type = "text" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                  
 
-                        </b>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Your Password *", required = "required", type = "Password", id = "myInput" } })
-                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                            <input type="checkbox" onclick="myFunction()" ><b>Show Password</b>
+                    <br />
 
-                        </div>
-                    </div>
-
-
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <!--      <button type="submit" value="Create My Account" class="btn btn-primary" onclick="showpopup()">Create My Account</button> -->
-                        <input type="submit" value="Creat My Account" class="btn btn-primary" />
-
-
-                        <label><b>@ViewBag.SuccessMessage</b> </label>
-                        <label><b>@ViewBag.ErrorMessage </b> </label>
-                        <label><b>@ViewBag.alreadyregistermail </b> </label>
-
-
-
-
-                        <br />
-                        <br />
-
+                    <div class="wthree-text">
+                        <label class="anim">
+                            <input type="checkbox" class="checkbox" required="">
+                            <span>Create My Account</span>
+                        </label>
 
                     </div>
 
-                </div>
+                    <input type="submit" value="SIGNUP">
 
+                    <label><b>@ViewBag.SuccessMessage</b> </label>
+                    <label><b>@ViewBag.ErrorMessage </b> </label>
+                    <label><b>@ViewBag.alreadyregistermail </b> </label>
+                    <p>Have an Account? <a href="@Url.Action("login", "Login")"> Login Now!</a></p>
+                </form>
             </div>
-
-        }
-        <a class="btn btn-primary" href="@Url.Action("login", "Login")" role="button">Back to Login </a>
-
+        </div>
+  
+        <!-- copyright -->
+        <div class="colorlibcopy-agile">
+            <p>© 2021 Smart Establishment. All rights reserved </p>
+        </div>
+        <!-- //copyright -->
+        <ul class="colorlib-bubbles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
     </div>
-    <script>
-        function showpopup() {
-            //  if (model.Phone!="")
-            swal.fire("this is me");
-        }
-        function myFunction() {
-            var x = document.getElementById("myInput");
-            if (x.type === "password") {
-                x.type = "text";
-            } else {
-                x.type = "password";
+}
+    </body>
+
+        <script>
+            function showpopup() {
+                //  if (model.Phone!="")
+                swal.fire("this is me");
             }
-        }
-            window.addEventListener("load", function () {
-        const loader = document.querySelector(".loader");
-        loader.className += " hidden"; // class "loader hidden"
-});
-    </script>
+            function myFunction() {
+                var x = document.getElementById("myInput");
+                if (x.type === "password") {
+                    x.type = "text";
+                } else {
+                    x.type = "password";
+                }
+            }
+                window.addEventListener("load", function () {
+            const loader = document.querySelector(".loader");
+            loader.className += " hidden"; // class "loader hidden"
+    });
+        </script>
 
 
-</body>
+    
 
