@@ -93,6 +93,7 @@ namespace FYP_App.Controllers
 
         public ActionResult ForgotPassword(Login login)
         {
+            
             String password;
             String mycon = "Data Source=DESKTOP-BSAK185; Initial Catalog =FYP database; Integrated Security = True";
             String myquery = "select * from Sign_Up where Email='" + login.Name + "' ";
