@@ -62,9 +62,17 @@
         var Password = $("#Password").val();
         var Status = $("#Status").val();
         var insertem = { "ID": ID, "Name": Name, "Email": Email, "Phone": Phone, "Password": Password, "Status": Status };
-
+        debugger
         $.post('/UserVerify/Creates', insertem,
-            function (data) { if (data) { location = location.href; } }, 'json');
+            function (data) {
+                if (data.post)
+                { location = location.href; }
+                else {
+                    
+                    alert("Server Error \n Invalid Entry !!");
+            
+          }
+            }, 'json');
 
     }
     //$.ajax({

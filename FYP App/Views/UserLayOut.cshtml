@@ -7,9 +7,9 @@
         User Dashboard
     </title>
     <link href="~/Content/preloader.css" rel="stylesheet" />
-</head>
 
-<style>
+
+    <style>
     :root {
   --page-header-bgColor: #242e42;
   --page-header-bgColor-hover: #1d2636;
@@ -447,11 +447,13 @@ body {
 .page-footer span {
   color: var(--red);
 }
-</style>
-
+    </style>
+</head>
 <body>
     <div class="loader">
-        <img src="~/Content/200.gif" alt="Loading..." />
+        <div class="spinner-grow text-dark"></div>
+
+        @*<img src="~/Content/200.gif" alt="Loading..." />*@
     </div>
     <svg style="display:none;">
         <symbol id="down" viewBox="0 0 16 16">

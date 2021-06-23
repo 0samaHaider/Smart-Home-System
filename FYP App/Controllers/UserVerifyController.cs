@@ -111,7 +111,7 @@ namespace FYP_App.Controllers
             else
             {
 
-                return Json("<script>alert(\"some message\")</script>");
+                return Json("error");
             }
 
         }

@@ -15,6 +15,8 @@
 <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap.min.css">
 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+<meta http-equiv="Refresh" content="5">
+
 <div class="grey-bg container-fluid">
     <section id="minimal-statistics">
         <div class="row">
@@ -128,8 +130,11 @@
                                 </div>
                                 <div class="media-body text-right">
                                     <h3>
+                                        
                                         @foreach (var item in Model)
                                         {
+
+
                                             @Html.DisplayFor(modelItem => item.Mositure)
                                         }
                                     </h3>
@@ -181,7 +186,7 @@
                                         }
 
                                     </h3>
-                                   
+
                                     <span><b>Water Availability in Tank</b></span>
                                 </div>
                             </div>
@@ -316,10 +321,10 @@
                             <div class="media-body text-left">
                                 <h3 class="success">
                                     @foreach (var item in Model)
-                                        {
-                                            @Html.DisplayFor(modelItem => item.MotionOutput)
-                                        }
-                                    
+                                    {
+                                        @Html.DisplayFor(modelItem => item.MotionOutput)
+                                    }
+
                                 </h3>
                                 <span><b>Control Room Alarm</b></span>
                             </div>
@@ -443,6 +448,6 @@
         </div>
     </div>
 *@
-            @*</section>*@
+@*</section>*@
 
 

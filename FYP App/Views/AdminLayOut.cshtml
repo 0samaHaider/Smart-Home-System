@@ -13,9 +13,10 @@
     <link href="~/Content/sweetalert/sweetalert2.min.css" rel="stylesheet" />
     <link href="~/Content/sweetalert/sweetalert2.css" rel="stylesheet" />
     <link href="~/Content/preloader.css" rel="stylesheet" />
-</head>
 
-<style>
+
+
+    <style>
     :root {
   --page-header-bgColor: #242e42;
   --page-header-bgColor-hover: #1d2636;
@@ -449,11 +450,19 @@ body {
 .page-footer span {
   color: var(--red);
 }
-</style>
 
+    </style>
+
+</head>
 <body>
+    <div class="container">
+     
+         
+        
+    </div>
     <div class="loader">
-        <img src="~/Content/200.gif" alt="Loading..." />
+        <div class="spinner-grow text-dark"></div>
+        @*   <img src="~/Content/200.gif" alt="Loading..." />*@
     </div>
     <svg style="display:none;">
         <symbol id="down" viewBox="0 0 16 16">
@@ -616,8 +625,17 @@ body {
 </body>
 </html>
 <script>
+    debugger
     window.addEventListener("load", function () {
+        
         const loader = document.querySelector(".loader");
         loader.className += " hidden"; // class "loader hidden"
     });
+
+    //
+
+
+
+
+   
 </script>

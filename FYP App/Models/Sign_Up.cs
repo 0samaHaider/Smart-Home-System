@@ -16,8 +16,8 @@ namespace FYP_App.Models
     public partial class Sign_Up
     {
         public int ID { get; set; }
-        [Required(ErrorMessage = "Name is Requirde"), MaxLength(20)]
-        //[RegularExpression(@"^([a-zA-Z ]*?)\s|([a-zA-Z]*)$", ErrorMessage = "Name is not in Format.")]
+       // [Required(ErrorMessage = "Name is Requirde"), MaxLength(20)]
+       [RegularExpression(@"^[a-zA-Z].*[\s\.]*$", ErrorMessage = "Name is not in Format."), MaxLength(20), Required]
         public string Name { get; set; }
 
 
