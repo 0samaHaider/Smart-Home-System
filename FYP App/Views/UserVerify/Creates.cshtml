@@ -3,6 +3,10 @@
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="~/Scripts/jquery-1.9.1.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <div @*style="background-color:#E6E6FA"*@>
     <form>
         <div class="form-group">
@@ -39,8 +43,11 @@
         </div>
         <p>
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-success" style="margin-bottom:10px" onclick="savedetails()" />
-                <input  type="reset" value="Reset" class="btn btn-danger" style="margin-bottom:10px"   />
+
+                <button type="submit" style="margin-bottom:10px" onclick="savedetails()" class="btn btn-success btn-sm btn-lg loading buttonload" id="load" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Loading...">Submit</button>
+
+                @* <input value="Create" class="btn btn-success" style="margin-bottom:10px" onclick="savedetails()" />*@
+                <input type="reset" value="Reset" class="btn btn-danger" style="margin-bottom:10px" />
 
 
             </div>
@@ -51,7 +58,7 @@
 
 
 
-    
+
 </div>
 <script type="text/javascript">
     function savedetails() {
@@ -65,13 +72,12 @@
         debugger
         $.post('/UserVerify/Creates', insertem,
             function (data) {
-                if (data.post)
-                { location = location.href; }
+                if (data.post) { location = location.href; }
                 else {
-                    
+
                     alert("Server Error \n Invalid Entry !!");
-            
-          }
+
+                }
             }, 'json');
 
     }
@@ -87,4 +93,15 @@
     //    }
 
     //})
+</script>
+<script src="custom.js"></script>
+<script>
+    $('.loading').on('click', function () {
+        var $btn = $(this);
+        $btn.button('loading');
+        setTimeout(function () {
+            $btn.button('reset');
+        }, 4000);
+    });
+
 </script>

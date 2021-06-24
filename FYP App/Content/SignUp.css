@@ -1,4 +1,4 @@
-﻿<style >
+﻿
 /*--
 Author: Colorlib
 Author URL: https://colorlib.com
@@ -6,6 +6,21 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
 /*-- reset --*/
+input::-webkit-input-placeholder { /* WebKit browsers */
+    color: #f51;
+}
+
+input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #f51;
+}
+
+input::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #f51;
+}
+
+input:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #f51;
+}
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, dl, dt, dd, ol, nav ul, nav li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
     margin: 0;
     padding: 0;
@@ -803,4 +818,14 @@ input.checkbox {
     }
 }
 
-</style >
+::placeholder { /* Firefox, Chrome, Opera */
+    color: blue;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: red;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: orange;
+}
