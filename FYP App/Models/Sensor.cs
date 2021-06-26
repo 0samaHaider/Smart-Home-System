@@ -8,7 +8,7 @@ namespace FYP_App.Models
     public class Sensor
     {
         //public string ID { get; set; }
-        public int Humidity { get; set; }
+        public int Humidity {get; set; }
         public string Smoke { get; set; }
         public string Temperature { get; set; }
         public string Light { get; set; }

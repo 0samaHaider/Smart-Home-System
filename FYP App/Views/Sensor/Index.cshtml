@@ -17,12 +17,14 @@
 <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 <meta http-equiv="Refresh" content="5">
 
-<div class="grey-bg container-fluid">
+<div class="grey-bg container-fluid" id="printableArea">
+
+
     <section id="minimal-statistics">
         <div class="row">
             <div class="col-12 mt-3 mb-1">
-                <h4 style=" color:darkcyan"><b>Smart Home System Sensors Data</b></h4>
-                @*<p>Statistics on minimal cards.</p>*@
+                <h4 style=" color:darkcyan"><b>Smart Home System Sensors Data</b> <button type="button" style="float:right" class="fa fa-file-pdf-o" onclick="printDiv('printableArea' )">&nbsp;&nbsp;DOWNLOAD</button></h4>
+                @*<p>Statistics on minimal cards.</p>*@ 
             </div>
         </div>
         <div class="row">
@@ -61,7 +63,9 @@
                                     <h3>
                                         @foreach (var item in Model)
                                         {
+                                            
                                             @Html.DisplayFor(modelItem => item.Humidity)
+                                          
                                         }
                                         %
                                     </h3>
@@ -85,6 +89,10 @@
                                         @foreach (var item in Model)
                                         {
                                             @Html.DisplayFor(modelItem => item.Smoke)
+                                            if (item.Smoke == "Detected")
+                                            {
+                                                Console.Beep(500, 8000);
+                                            }
                                         }
                                     </h3>
                                     <span><b>Smoke Level</b></span>
@@ -130,7 +138,7 @@
                                 </div>
                                 <div class="media-body text-right">
                                     <h3>
-                                        
+
                                         @foreach (var item in Model)
                                         {
 
@@ -160,6 +168,10 @@
                                         @foreach (var item in Model)
                                         {
                                             @Html.DisplayFor(modelItem => item.Motion)
+                                            if (item.Motion == "Detected")
+                                            {
+                                                Console.Beep(500, 8000);
+                                            }
                                         }
                                     </h3>
                                     <span><b>Entry in Control Room</b></span>
@@ -183,6 +195,10 @@
                                         @foreach (var item in Model)
                                         {
                                             @Html.DisplayFor(modelItem => item.WaterAvailable)
+                                            if (item.WaterAvailable == "NO")
+                                            {
+                                                Console.Beep(500, 8000);
+                                            }
                                         }
 
                                     </h3>
@@ -449,5 +465,17 @@
     </div>
 *@
 @*</section>*@
+<script>
+    function printDiv(divName) {
+        debugger
+        var printContents = document.getElementById(divName).innerHTML;
+        var originalContents = document.body.innerHTML;
 
+        document.body.innerHTML = printContents;
+
+        window.print();
+
+        document.body.innerHTML = originalContents;
+    }
+</script>
 

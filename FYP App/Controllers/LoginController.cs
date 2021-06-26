@@ -110,10 +110,12 @@ namespace FYP_App.Controllers
                 password = ds.Tables[0].Rows[0]["Password"].ToString();
                 Email_Sender email_Sender = new Email_Sender();
                 email_Sender.Password_Email(login.Name , password);
+                
                 ViewBag.SuccessMessage = "Check Your Email Inbox ✔️.";
             }
             else
             {
+                
                 ViewBag.errors = "Invalid Email ❌";
             }
 

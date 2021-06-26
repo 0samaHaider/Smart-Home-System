@@ -34,8 +34,12 @@ namespace FYP_App.Controllers
             {
                 foreach (var item in data)
                 {
+                  
                     list.Add(JsonConvert.DeserializeObject<Sensor>(((JProperty)item).Value.ToString()));
                 }
+               
+                
+
             }
             catch
             {
