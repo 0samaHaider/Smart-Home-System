@@ -43,6 +43,9 @@
     <br />
     <br />
     <br />
+    <button type="button" style="float:right" onclick="location.href='@Url.Action("xl", "Complaint")'" class="btn btn-success" />   <img src="https://img.icons8.com/ios-filled/40/26e07f/ms-excel.png" /> &nbsp;&nbsp;<b>DOWNLOAD</b></button>
+    <br /> <br />
+    <br />
     <input class="form-control" id="myInput" type="text" placeholder="Search..">
 
     <table class="table table-success table-striped">
@@ -98,7 +101,7 @@
                         <!--       <a href="@Url.Action("Details","Complaint", new { id = item.Complaint_ID })" class="btn btn-mini btn-info icon-edit bigger-10"><img src="https://img.icons8.com/ultraviolet/24/000000/ring-details.png" /></a> | -->
                         <a href="@Url.Action("Edit", "Complaint", new { id = item.Complaint_ID })" class="btn btn-mini btn-info icon-edit bigger-10"><img src="https://img.icons8.com/android/24/000000/edit.png" /></a>
                         <a href="@Url.Action("Admin_Details","Complaint", new { id = item.Complaint_ID })" class="btn btn-mini btn-info icon-edit bigger-10"><img src="https://img.icons8.com/ultraviolet/24/000000/ring-details.png" /></a>
-                        <a href="@Url.Action("Admin_Delete","Complaint", new { id = item.Complaint_ID })" class="btn btn-mini btn-info icon-edit bigger-10" onclick = "return confirm('Are you sure you to delete this Record?');"><img src="https://img.icons8.com/ios-filled/24/000000/delete-forever.png" /></a>
+                        <a href="@Url.Action("Admin_Delete","Complaint", new { id = item.Complaint_ID })" class="btn btn-mini btn-info icon-edit bigger-10" onclick="return confirm('Are you sure you to delete this Record?');"><img src="https://img.icons8.com/ios-filled/24/000000/delete-forever.png" /></a>
 
                     </td>
                 </tr>
@@ -115,7 +118,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
     <script>
-      
+
         function dellpopups() {
             Swal.fire({
                 title: "Delete Successully !!",

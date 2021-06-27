@@ -9,6 +9,10 @@ using PagedList;
 using System.Net.Mail;
 using System.Net;
 using FYP_App.Services;
+using System.Data;
+using System.Data.Entity.Infrastructure;
+using ClosedXML.Excel;
+using System.IO;
 
 namespace FYP_App.Controllers
 {
@@ -209,6 +213,38 @@ namespace FYP_App.Controllers
             }
         }
         #endregion
+
+        public ActionResult xl()
+        {
+            DbModel1s entities = new DbModel1s();
+            DataTable dt = new DataTable("Grid");
+            dt.Columns.AddRange(new DataColumn[7] { new DataColumn("Complaint_ID"),
+                                            new DataColumn("User_Email"),
+                                            new DataColumn("User_Name"),
+                                            new DataColumn("Date") ,
+                                            new DataColumn("Subject") ,
+                                            new DataColumn("Description"),
+                                            new DataColumn("Complaint Status")
+            });
+
+            var complaint = from complaints in entities.Complaint_DB
+                        select complaints;
+
+            foreach (var complaints in complaint)
+            {
+                dt.Rows.Add(complaints.Complaint_ID, complaints.User_Email, complaints.User_Name, complaints.Date, complaints.Subject, complaints.Description, complaints.Status);
+            }
+
+            using (XLWorkbook wb = new XLWorkbook())
+            {
+                wb.Worksheets.Add(dt);
+                using (MemoryStream stream = new MemoryStream())
+                {
+                    wb.SaveAs(stream);
+                    return File(stream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Complaint.xlsx");
+                }
+            }
+        }
 
 
     }

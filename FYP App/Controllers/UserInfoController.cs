@@ -7,6 +7,8 @@ using FYP_App.Models;
 
 using System.Data.Entity;
 using PagedList;
+using System.IO;
+using Syncfusion.XlsIO;
 
 namespace FYP_App.Controllers
 {
@@ -36,7 +38,9 @@ namespace FYP_App.Controllers
                 {
                     Name = Session["Name"].ToString();
                     var drafts = db1.Sign_Up.Where(d => d.Email == Name).ToList();
+     
                     return View(drafts);
+
                 }
             }
             catch

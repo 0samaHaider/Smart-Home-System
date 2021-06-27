@@ -7,11 +7,47 @@ using System.Data.Entity;
 using FYP_App.Models;
 using PagedList;
 using FYP_App.Services;
+using Syncfusion.XlsIO;
+using System.IO;
+using System.Data.SqlClient;
+using System.Collections;
+using System.Data;
+using ClosedXML.Excel;
 
 namespace FYP_App.Controllers
 {
     public class UserVerifyController : Controller
     {
+
+        public ActionResult xl()
+        {
+            DbModels entities = new DbModels();
+            DataTable dt = new DataTable("Grid");
+            dt.Columns.AddRange(new DataColumn[6] { new DataColumn("ID"),
+                                            new DataColumn("User Name"),
+                                            new DataColumn("User Email"),
+                                            new DataColumn("User Phone") ,
+                                            new DataColumn("User Password") ,
+                                            new DataColumn("User Account status") });
+
+            var users = from user in entities.Sign_Up
+                            select user;
+
+            foreach (var user in users)
+            {
+                dt.Rows.Add(user.ID, user.Name, user.Email, user.Phone, user.Password,user.Status);
+            }
+
+            using (XLWorkbook wb = new XLWorkbook())
+            {
+                wb.Worksheets.Add(dt);
+                using (MemoryStream stream = new MemoryStream())
+                {
+                    wb.SaveAs(stream);
+                    return File(stream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Users.xlsx");
+                }
+            }
+        }
         #region User_Index_By_Admin
         [HttpGet]
         public ActionResult Index(int? i)
