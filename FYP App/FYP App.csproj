@@ -433,7 +433,6 @@
     <Content Include="Views\UserVerify\Editt.cshtml" />
     <Content Include="Views\UserInfo\Update.cshtml" />
     <Content Include="Views\Login\Error.cshtml" />
-    <Content Include="Views\Login\abc.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

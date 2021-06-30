@@ -36,6 +36,7 @@ namespace FYP_App.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Sign_Up sign_Up)
         {
             if (ModelState.IsValid)
@@ -56,8 +57,8 @@ namespace FYP_App.Controllers
 
                         dbModel.Sign_Up.Add(sign_Up);
                         dbModel.SaveChanges();
-                        Email_Sender email_Sender = new Email_Sender();
-                        email_Sender.SignUp_Email(sign_Up.Email);
+                       // Email_Sender email_Sender = new Email_Sender();
+                       // email_Sender.SignUp_Email(sign_Up.Email);
                         ViewBag.SuccessMessage = "Account Successfully ✔️ Wait for approval  !!";
                         ModelState.Clear();
                     }

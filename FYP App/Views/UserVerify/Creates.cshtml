@@ -72,7 +72,7 @@
         debugger
         $.post('/UserVerify/Creates', insertem,
             function (data) {
-                if (data.post) { location = location.href; }
+                if (data.post == true) { location = location.href; }
                 else {
 
                     alert("Server Error \n Invalid Entry !!");
