@@ -13,12 +13,12 @@ namespace FYP_App.Models
         public string Temperature { get; set; }
         public string Light { get; set; }
         public string Motion { get; set; }
-        public string Mositure { get; set; }
+        public string MoistureAvailable { get; set; }
         public string HumidityOutput { get; set; }
         public string LightOUTPUT { get; set; }
         public string SmokeOUTPUT { get; set; }
         public string TempOutput { get; set; }
-        public string MosOutput { get; set; }
+        public string MoisOUTPUT { get; set; }
         public string MotionOutput { get; set; }
         public string WaterAvailable { get; set; }
 

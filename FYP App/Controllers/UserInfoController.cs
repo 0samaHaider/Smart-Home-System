@@ -9,6 +9,12 @@ using System.Data.Entity;
 using PagedList;
 using System.IO;
 using Syncfusion.XlsIO;
+using FireSharp.Interfaces;
+using FireSharp.Response;
+using FireSharp.Config;
+using Newtonsoft.Json;
+using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 
 namespace FYP_App.Controllers
 {
@@ -55,6 +61,7 @@ namespace FYP_App.Controllers
         [HttpGet]
         public PartialViewResult Update(Int32 ID)
         {
+           
             DbModels sd = new DbModels();
             Sign_Up emp = sd.Sign_Up.Where(x => x.ID == ID).FirstOrDefault();
             Crudclass empclass = new Crudclass();
@@ -62,29 +69,47 @@ namespace FYP_App.Controllers
             empclass.Password = emp.Password;
             empclass.Email = emp.Email;
             empclass.Phone = emp.Phone;
-            empclass.Status = emp.Status;
+            //empclass.Status = emp.Status;
+
             return PartialView(empclass);
         }
         [HttpPost]
         public JsonResult Update(Sign_Up emp)
         {
+            if (ModelState.IsValid)
+            {
 
-            DbModels sd = new DbModels();
-            int empp = emp.ID;
-            Sign_Up emptb = sd.Sign_Up.Where(x => x.ID == empp).FirstOrDefault();
-            Crudclass empclass = new Crudclass();
-            emptb.Name = emp.Name;
-            emptb.Email = emp.Email;
-            emptb.Password = emp.Password;
-            emptb.Phone = emp.Phone;
-            emptb.Status = emp.Status;
-            sd.SaveChanges();
+                DbModels sd = new DbModels();
+                int empp = emp.ID;
+                Sign_Up emptb = sd.Sign_Up.Where(x => x.ID == empp).FirstOrDefault();
+                Crudclass empclass = new Crudclass();
+                emptb.Name = emp.Name;
+                emptb.Email = emp.Email;
+                emptb.Password = emp.Password;
+                emptb.Phone = emp.Phone;
+                // emptb.Status = emp.Status;
+            
+                sd.SaveChanges();  
+                return Json(emptb, JsonRequestBehavior.AllowGet);
 
-            return Json(emptb, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+
+
+               
+
+
+
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
+
         }
 
 
 
         #endregion
+
+
     }
 }

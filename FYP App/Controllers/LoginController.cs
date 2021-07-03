@@ -20,11 +20,11 @@ namespace FYP_App.Controllers
     {
         #region Database Objects
 
-        readonly SqlConnection con = new SqlConnection();
-        readonly SqlCommand com = new SqlCommand();
+        SqlConnection con = new SqlConnection();
+        SqlCommand com = new SqlCommand();
         SqlDataReader dr;
-        readonly DbModel1s db1 = new DbModel1s();
-        readonly DbModels db2 = new DbModels();
+        DbModel1s db1 = new DbModel1s();
+        DbModels db2 = new DbModels();
         #endregion
 
         #region UserDashBoard
@@ -47,7 +47,9 @@ namespace FYP_App.Controllers
         #endregion
 
         #region Login
+     
         [HttpGet]
+        [OutputCache(Duration = 500)]
         public ActionResult Login()
         {
 
@@ -65,6 +67,20 @@ namespace FYP_App.Controllers
             dr = com.ExecuteReader();
             if (dr.Read() == true)
             {
+
+                con.Close();
+                con.Open();
+                SqlCommand cmd = new SqlCommand("select Status from Sign_Up where Email='" + login.Name + "'", con);
+                SqlCommand cmds = new SqlCommand("select COUNT(*) from Complaint_DB where User_Email= '" + login.Name +"'", con);
+                SqlCommand cmdss = new SqlCommand("select COUNT(*) from Complaint_DB where User_Email='" + Session["Name"] + "' AND  Status = 'Solved'", con);
+
+                var result = (string)cmd.ExecuteScalar();
+                var result2 = (int)cmds.ExecuteScalar();
+                var result3 = (int)cmdss.ExecuteScalar();
+                ViewBag.Account_Status = result;
+                ViewBag.Total_Complaint_Status = result2;
+                ViewBag.Solved_Complaint_Status = result3;
+                //con.Close();
                 return View("User");
             }
 
@@ -85,6 +101,7 @@ namespace FYP_App.Controllers
 
         #region ForgotPassword
         [HttpGet]
+        [OutputCache(Duration = 500)]
         public ActionResult ForgotPassword()
         {
             return View();
@@ -111,7 +128,7 @@ namespace FYP_App.Controllers
                 Email_Sender email_Sender = new Email_Sender();
                 email_Sender.Password_Email(login.Name , password);
                 
-                ViewBag.SuccessMessage = "Check Your Email Inbox ✔️.";
+                ViewBag.SuccessMessage = "Check Your Email Inbox ✔️";
             }
             else
             {
@@ -129,6 +146,26 @@ namespace FYP_App.Controllers
             return View();
         }
         #endregion
-        
+
+        #region User_Dashborad
+        public ActionResult User_Dashborad(Login login)
+        {
+            connectionstring();
+            con.Open();
+            SqlCommand cmd = new SqlCommand("select Status from Sign_Up where Email='" + Session["Name"] + "'", con);
+            SqlCommand cmds = new SqlCommand("select COUNT(*) from Complaint_DB where User_Email= '" + Session["Name"] + "'", con);
+            SqlCommand cmdss = new SqlCommand("select COUNT(*) from Complaint_DB where User_Email='" + Session["Name"] + "' AND  Status = 'Solved'", con);
+            var result = (string)cmd.ExecuteScalar();
+            var result2 = (int)cmds.ExecuteScalar();
+            var result3 = (int)cmdss.ExecuteScalar();
+            ViewBag.Account_Status = result;
+            ViewBag.Total_Complaint_Status = result2;
+            ViewBag.Solved_Complaint_Status = result3;
+
+            return View();
+        }
+        #endregion
+
+
     }
 }

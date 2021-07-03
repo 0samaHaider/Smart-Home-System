@@ -100,9 +100,9 @@
                 </td>
 
                 <td>
-                    <a href="@Url.Action("Details","Complaint", new { id = item.Complaint_ID })" class="btn btn-mini btn-info icon-edit bigger-10"><img src="https://img.icons8.com/ultraviolet/24/000000/ring-details.png" /></a> |
+                    <a href="@Url.Action("Details","Complaint", new { id = item.Complaint_ID })" class="btn btn-mini btn-info icon-edit bigger-10"><img src="https://img.icons8.com/ultraviolet/24/000000/ring-details.png" /></a> @*|*@
 
-                    <a href="@Url.Action("Delete","Complaint", new { id = item.Complaint_ID })" class="btn btn-mini btn-info icon-edit bigger-10" onclick = "return confirm('Are you sure you to delete this Record?');"><img src="https://img.icons8.com/ios-filled/24/000000/delete-forever.png" /></a>
+                   @* <a href="@Url.Action("Delete","Complaint", new { id = item.Complaint_ID })" class="btn btn-mini btn-info icon-edit bigger-10" onclick = "return confirm('Are you sure you to delete this Record?');"><img src="https://img.icons8.com/ios-filled/24/000000/delete-forever.png" /></a>*@
 
                 </td>
             </tr>

@@ -5,75 +5,152 @@
     Layout = "~/Views/UserLayOut.cshtml";
 }
 
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+        input[type=text], select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgb(70, 68, 68);
+            border-radius: 4px;
+            resize: vertical;
+        }
 
-    <div class="form-horizontal">
-        <p style="color:lightseagreen;"><b>Create Your Complaint !!</b></p>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
+        input[type=email], select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgb(70, 68, 68);
+            border-radius: 4px;
+            resize: vertical;
+        }
 
-            <div class="col-md-10">
-                <label><b>User Name </b> </label>
-                @Html.TextBoxFor(model => model.User_Name, new { @class = "form-control", @Value = ViewBag.name, @readonly = "readonly" })
-                @Html.ValidationMessageFor(model => model.User_Name, "", new { @class = "text-danger" })
-            </div>
+        label {
+            padding: 12px 12px 12px 0;
+            display: inline-block;
+        }
+
+        input[type=submit] {
+            background-color: rgb(37, 116, 161);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+        }
+
+            input[type=submit]:hover {
+                background-color: #45a049;
+            }
+
+        .container {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+        .col-25 {
+            float: left;
+            width: 25%;
+            margin-top: 6px;
+        }
+
+        .col-75 {
+            float: left;
+            width: 75%;
+            margin-top: 6px;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+    </style>
+</head>
+<body>
+
+    @using (Html.BeginForm())
+    {<br />
+        <br />
+        <br />
+        @Html.AntiForgeryToken()
+        <h2> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;ℂ𝕣𝕖𝕒𝕥𝕖 𝕐𝕠𝕦𝕣 ℂ𝕠𝕞𝕡𝕝𝕒𝕚𝕟𝕥</h2>
+        <div class="container">
+            <form>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="fname">User Name</label>
+                    </div>
+                    <div class="col-75">
+
+                        @Html.TextBoxFor(model => model.User_Name, new { @class = "form-control", @Value = ViewBag.name, @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.User_Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="lname">User Email</label>
+                    </div>
+                    <div class="col-75">
+                        @Html.TextBoxFor(model => model.User_Email, new { @class = "form-control", @Value = ViewBag.email, @readonly = "readonly" })
+
+                        @Html.ValidationMessageFor(model => model.User_Email, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.Date, new { @class = "form-control", @Value = ViewBag.date, @readonly = "readonly" })
+
+                        @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="email">Complaint Subject </label>
+                    </div>
+                    <div class="col-75">
+                        @Html.TextBoxFor(model => model.Subject, new { @class = "form-control", required = "required" })
+                        @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-25">
+                        <label for="feed_back">Complaint Description</label>
+                    </div>
+                    <div class="col-75">
+
+                        @Html.TextAreaFor(model => model.Description, new { @style = "height:200px", placeholder = "Write something..", required = "required" })
+                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <input type="submit" value="Submit">
+                    </div>
+                </div>
+
+                <div>
+                    <div class="row">
+                        <a href="@Url.Action("Index","Complaint")" class="btn btn-mini btn-info icon-edit bigger-07"><img src="https://img.icons8.com/flat_round/30/000000/back--v1.png" />Back to List </a>
+
+                    </div>
+                </div>
+
+            </form>
         </div>
-        <div class="form-group">
-            <div class="col-md-10">
-                <label><b>User Email</b> </label>
-
-                @Html.TextBoxFor(model => model.User_Email, new { @class = "form-control", @Value = ViewBag.email, @readonly = "readonly" })
-
-                @Html.ValidationMessageFor(model => model.User_Email, "", new { @class = "text-danger" })
+    }
+   
+</body>
+   
+</html>
 
 
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-10">
+    
 
-                @Html.HiddenFor(model => model.Date, new { @class = "form-control", @Value = ViewBag.date, @readonly = "readonly" })
-
-                @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
-
-
-            </div>
-        </div>
-        <div class="form-group">
-
-            <div class="col-md-10">
-                <label><b>Subject</b> </label>
-                @Html.TextBoxFor(model => model.Subject, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-10">
-                <label><b>Complaint Description</b> </label>
-                <br />
-                @Html.TextAreaFor(model => model.Description, new { cols = "125", rows = "5" })
-                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-
-
-
-
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-success" style="margin-bottom:10px" />
-            </div>
-        </div>
-    </div>
-}
-
-<div>
-    <a href="@Url.Action("Index","Complaint")" class="btn btn-mini btn-info icon-edit bigger-10" ><img src="https://img.icons8.com/flat_round/30/000000/back--v1.png"/>Back to List </a>
-
-</div>

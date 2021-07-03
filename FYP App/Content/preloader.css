@@ -1,5 +1,4 @@
-﻿
-.loader {
+﻿.loader {
     position: fixed;
     z-index: 99;
     top: 0;
@@ -12,14 +11,14 @@
     align-items: center;
 }
 
-.loader > img {
-    width: 30%;
-}
+    .loader > img {
+        width: 30%;
+    }
 
-.loader.hidden {
-    animation: fadeOut 5s;
-    animation-fill-mode: forwards;
-}
+    .loader.hidden {
+        animation: fadeOut 1s;
+        animation-fill-mode: forwards;
+    }
 
 @keyframes fadeOut {
     100% {
@@ -33,4 +32,3 @@
     border: 1px solid black;
     margin: 10px;
 }
-

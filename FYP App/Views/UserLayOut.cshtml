@@ -450,11 +450,12 @@ body {
     </style>
 </head>
 <body>
-    <div class="loader">
-        @*<div class="spinner-grow text-dark"></div>*@
+    @*<div class="loader">
 
-        <img src="~/Content/200.gif" alt="Loading..." />
-    </div>
+
+    </div>*@
+    @*<img src="~/Content/200.gif" alt="Loading..." />*@
+
     <svg style="display:none;">
         <symbol id="down" viewBox="0 0 16 16">
             <polygon points="3.81 4.38 8 8.57 12.19 4.38 13.71 5.91 8 11.62 2.29 5.91 3.81 4.38" />
@@ -514,7 +515,7 @@ body {
                 <li>
                     <button class="collapse-btn" aria-expanded="true" aria-label="collapse menu">
 
-                        <a href="#11">
+                        <a href="@Url.Action("User_Dashborad", "Login")">
                             <svg>
                                 <use xlink:href="#pages"></use>
                             </svg>
@@ -534,7 +535,7 @@ body {
 
                     <a href='@Url.Action("Index", "Sensor")'><span class="glyphicon glyphicon-dashboard"></span><svg> <use xlink:href="#trends"></use></svg>Sensor Data</a>
                 </li>
-                
+
                 <li>
                     @*<button class="collapse-btn" aria-expanded="true" aria-label="collapse menu">*@
                     <a href="@Url.Action("login", "Login")">
@@ -560,15 +561,12 @@ body {
     <section class="page-content">
         <section class="search-and-user">
             <form>
-                <input type="search" placeholder="Search Pages..." id="myInputss">
-                <button type="submit" aria-label="submit form">
-                    <svg aria-hidden="true">
-                        <use xlink:href="#search"></use>
-                    </svg>
-                </button>
+                <script async src="https://cse.google.com/cse.js?cx=97f5352c77e4a2870"></script>
+                <div class="gcse-search"></div>
             </form>
 
             <div class="admin-profile">
+              
                 <span class="greeting">Hello <b>@Session["Name"]</b> </span>
                 <div class="notifications">
                     <span class="badge"></span>
@@ -588,11 +586,11 @@ body {
             </footer> -->
     </section>
 
-
 </body>
 </html>
 <script>
     window.addEventListener("load", function () {
+        
         const loader = document.querySelector(".loader");
         loader.className += " hidden"; // class "loader hidden"
     });

@@ -44,7 +44,7 @@
 </div>
 <p>
     <div class="col-md-offset-2 col-md-10">
-        <input type="submit" value="Update" class="btn btn-success" style="margin-bottom:20px" onclick="savedetails()" />
+        <input type="submit" value="Update" class="btn btn-success" style="margin-bottom:10px" onclick="savedetails()" />
     </div>
 
 </p>
@@ -64,7 +64,7 @@
     <br />
     Status:@Html.EditorFor(model => model.Email)
     <p>
-        <input type="button" value="save" onclick="savedetails()" />
+        <input type="button" value="Update" onclick="savedetails()" />
 
     </p>
 </div>
@@ -92,7 +92,6 @@
         success: function () {
             $("#loaderDiv").hide();
             $("#myModal").modal("hide");
-            modal: true,
 
         }
 

@@ -9,18 +9,26 @@
 <br />
 
 <div class="form-group">
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
     <label class=" font-weight-bold">User's Name</label><br />
     @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+    <p style="color:cornflowerblue"><small>Name Should be in Format</small></p>
+
     @Html.ValidationMessageFor(model => model.Name)
 </div>
 
 <div class="form-group">
     <label class=" font-weight-bold">User's Phone Number</label>
     @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+    <p style="color:cornflowerblue"><small>Phone Should be in Format</small></p>
+
 </div>
 <div class="form-group">
     <label class=" font-weight-bold">User's Email </label>
     @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+    <p style="color:cornflowerblue"><small>Email Should be in Format</small></p>
+
 </div>
 
 <div class="form-group">

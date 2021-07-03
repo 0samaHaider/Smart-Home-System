@@ -127,10 +127,12 @@ namespace FYP_App.Controllers
                         string id = dr.GetValue(0).ToString();
                         string name = dr.GetValue(1).ToString();
                         string email = dr.GetValue(2).ToString();
+                        
+
                         ViewBag.Id = id;
                         ViewBag.name = name;
                         ViewBag.email = email;
-                        ViewBag.date = now;
+                        ViewBag.date = now.ToString("MM/dd/yyyy hh:mm tt"); 
                     }
                 }
             }
@@ -149,7 +151,7 @@ namespace FYP_App.Controllers
                 {
                     Name = Session["Name"].ToString();
                     RetrieveUserInfo(Name);
-                    var drafts = db1.Complaint_DB.Where(d => d.User_Email == Name).ToList().OrderByDescending(d => d.Complaint_ID).ToPagedList(i ?? 1, 5); ;
+                    var drafts = db1.Complaint_DB.Where(d => d.User_Email == Name).ToList().OrderByDescending(d => d.Complaint_ID).ToPagedList(i ?? 1, 5); 
                     return View(drafts);
                 }
             }
@@ -214,6 +216,7 @@ namespace FYP_App.Controllers
         }
         #endregion
 
+        #region Complaint_To_Excel
         public ActionResult xl()
         {
             DbModel1s entities = new DbModel1s();
@@ -245,6 +248,7 @@ namespace FYP_App.Controllers
                 }
             }
         }
+        #endregion
 
 
     }

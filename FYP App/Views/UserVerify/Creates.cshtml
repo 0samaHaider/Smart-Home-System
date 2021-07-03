@@ -8,20 +8,28 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <div @*style="background-color:#E6E6FA"*@>
+   
     <form>
+
         <div class="form-group">
             <label class=" font-weight-bold">User's Name</label>
 
             @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Full Name*", required = "required", type = "text" } })
             @Html.ValidationMessageFor(model => model.Name)
+            <p style="color:cornflowerblue"><small>Name Should be in Format</small></p>
+
         </div>
         <div class="form-group">
             <label class=" font-weight-bold">User's Email</label>
             @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Email Address*", required = "required", type = "Email" })
+            <p style="color:cornflowerblue"><small>Email Should be in Format</small></p>
+
         </div>
         <div class="form-group">
             <label class=" font-weight-bold">User's Phone Number</label>
             @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", @placeholder = "Phone Number ", required = "required", type = "Number" })
+            <p style="color:cornflowerblue"><small>Phone Should be in Format</small></p>
+
         </div>
         <div class="form-group">
             <label class=" font-weight-bold">Account Password</label>
@@ -44,7 +52,7 @@
         <p>
             <div class="col-md-offset-2 col-md-10">
 
-                <button type="submit" style="margin-bottom:10px" onclick="savedetails()" class="btn btn-success btn-sm btn-lg loading buttonload" id="load" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Loading...">Submit</button>
+                <button type="submit" style="margin-bottom:10px" onclick="savedetails()" class="btn btn-success btn-sm btn-lg " >Submit</button>
 
                 @* <input value="Create" class="btn btn-success" style="margin-bottom:10px" onclick="savedetails()" />*@
                 <input type="reset" value="Reset" class="btn btn-danger" style="margin-bottom:10px" />
@@ -71,14 +79,13 @@
         var insertem = { "ID": ID, "Name": Name, "Email": Email, "Phone": Phone, "Password": Password, "Status": Status };
         debugger
         $.post('/UserVerify/Creates', insertem,
-            function (data) {
-                if (data.post == true) { location = location.href; }
-                else {
+            function (data) { if (data) { location = location.href; } }, 'json');
 
-                    alert("Server Error \n Invalid Entry !!");
-
-                }
-            }, 'json');
+        confirm("Are You Sure to Submit This ?");
+            //function (data) {
+            //    if (data.post == true) { location = location.href; }
+               
+            //}, 'json');
 
     }
     //$.ajax({
