@@ -81,13 +81,16 @@ namespace FYP_App.Controllers
                 ViewBag.Total_Complaint_Status = result2;
                 ViewBag.Solved_Complaint_Status = result3;
                 //con.Close();
-                return View("User");
+                return RedirectToAction("User_Dashborad");
             }
 
             else if (login.Name == "autoislamabad@gmail.com" && login.Password == "olx")
             {
+                return RedirectToAction("Admin", "UserInfo", null);
 
-                return View("Admin");
+               // return RedirectToAction("Admin");
+
+              //  return View("Admin");
             }
             else
             {
@@ -166,6 +169,14 @@ namespace FYP_App.Controllers
         }
         #endregion
 
+        public ActionResult Logout()
+
+        {
+            Session["Name"] = null;
+
+            Session.RemoveAll();
+            return   RedirectToAction("Login");
+        }
 
     }
 }

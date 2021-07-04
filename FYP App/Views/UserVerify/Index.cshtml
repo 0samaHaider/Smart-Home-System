@@ -103,23 +103,24 @@
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Status)
+                    
                     </td>
-                    @*<td>
-                            @Html.Raw("<input type='button'value=Edit  onclick='edit(" + item.ID + ")';>")
-                        </td>*@
-                    <td>
+                        @*<td>
+                @Html.Raw("<input type='button'value=Edit  onclick='edit(" + item.ID + ")';>")
+            </td>*@
+                        <td>
 
 
-                        @*  @Html.Raw("<input type='button'value= 'Update Profile' class='btn btn-success' onclick ='update(" + item.ID + ")';>")*@
-                        <img src="https://img.icons8.com/android/24/000000/edit.png"
-                             @Html.Raw("<input type='button'value=Edit class='btn btn-mini btn-info icon-edit bigger-10'  onclick='edit(" + item.ID + ")'; >")
+                            @*  @Html.Raw("<input type='button'value= 'Update Profile' class='btn btn-success' onclick ='update(" + item.ID + ")';>")*@
+                            <img src="https://img.icons8.com/android/24/000000/edit.png"
+                                 @Html.Raw("<input type='button'value=Edit class='btn btn-mini btn-info icon-edit bigger-10'  onclick='edit(" + item.ID + ")'; >")
 
                     <!--<a onclick='edit(" + item.ID + ")'--> @*href="@Url.Action("Edit", "UserVerify", new { id = item.ID })"*@ <!--class="btn btn-mini btn-info icon-edit bigger-10"><img src="https://img.icons8.com/android/24/000000/edit.png" /></a>-->
                     <a onclick="return confirm('Are you sure you to delete this Record?');" href="@Url.Action("Delete", "UserVerify", new { id = item.ID })" class="btn btn-mini btn-info icon-edit bigger-10"><img src="https://img.icons8.com/ios-filled/24/000000/delete-forever.png" /></a>
 
 
                 </td>
-            </tr>
+                </tr>
         </tbody>
     }
 

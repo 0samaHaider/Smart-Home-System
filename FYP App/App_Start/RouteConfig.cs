@@ -15,7 +15,7 @@ namespace FYP_App
 
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
+                url: "{controller}/{action}/{id}", 
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }
