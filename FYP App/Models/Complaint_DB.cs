@@ -20,7 +20,7 @@ namespace FYP_App.Models
         public string Description { get; set; }
         public string User_Name { get; set; }
         public string User_Email { get; set; }
-        public string Status { get; set; }
+        public string Status { get; set; } = "Pending";
     
         public virtual Complaint_DB Complaint_DB1 { get; set; }
         public virtual Complaint_DB Complaint_DB2 { get; set; }

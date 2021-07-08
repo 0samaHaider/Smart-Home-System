@@ -42,10 +42,19 @@ namespace FYP_App.Controllers
             {
                 using (DbModels db1 = new DbModels())
                 {
-                    Name = Session["Name"].ToString();
-                    var drafts = db1.Sign_Up.Where(d => d.Email == Name).ToList();
-     
-                    return View(drafts);
+                    if (Session["Name"] == null)
+                    {
+                        return RedirectToAction("LogIn", "Login");
+
+                    }
+                    else
+                    {
+                        Name = Session["Name"].ToString();
+                        var drafts = db1.Sign_Up.Where(d => d.Email == Name).ToList();
+
+
+                        return View(drafts);
+                    }
 
                 }
             }
@@ -97,11 +106,12 @@ namespace FYP_App.Controllers
             {
 
 
-               
 
 
+                Response.Write("<script>alert('Data inserted successfully')</script>");
 
-                return Json(false, JsonRequestBehavior.AllowGet);
+
+                return Json("error");
             }
 
         }

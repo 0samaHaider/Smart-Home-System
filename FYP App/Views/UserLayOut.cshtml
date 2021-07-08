@@ -450,10 +450,14 @@ body {
     </style>
 </head>
 <body>
+    @if (Session["Name"] == null)
+    {
+        Response.Redirect("~/Login/login");
+    }
     @*<div class="loader">
 
 
-    </div>*@
+        </div>*@
     @*<img src="~/Content/200.gif" alt="Loading..." />*@
 
     <svg style="display:none;">
@@ -566,7 +570,7 @@ body {
             </form>
 
             <div class="admin-profile">
-              
+
                 <span class="greeting">Hello <b>@Session["Name"]</b> </span>
                 <div class="notifications">
                     <span class="badge"></span>

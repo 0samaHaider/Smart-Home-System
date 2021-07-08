@@ -386,7 +386,6 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Email_Sender.cs" />
-    <Compile Include="Services\Excel_Service.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />

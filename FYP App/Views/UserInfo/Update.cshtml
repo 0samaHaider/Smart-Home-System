@@ -79,7 +79,7 @@
         var Status = $("#Status").val();
         var insertem = { "ID": ID, "Name": Name, "Password": Password, "Phone": Phone, "Status": Status, "Email": Email };
 
-        $.post('/UserInfo/Update', insertem,
+        $.post('/UserInfo/Update', insertem
             function (data) { if (data) { location = location.href; } }, 'json');
 
         confirm("Are You Sure to Update This ?");

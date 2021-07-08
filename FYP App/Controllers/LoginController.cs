@@ -13,11 +13,15 @@ using FireSharp.Response;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using FYP_App.Services;
+using System.Web.Security;
+using System.Web;
 
 namespace FYP_App.Controllers
 {
     public class LoginController : Controller
     {
+
+       
         #region Database Objects
 
         SqlConnection con = new SqlConnection();
@@ -49,15 +53,16 @@ namespace FYP_App.Controllers
         #region Login
      
         [HttpGet]
-        [OutputCache(Duration = 500)]
         public ActionResult Login()
         {
-
+            FormsAuthentication.SignOut();
+            Session.Abandon();
             return View();
         }
         [HttpPost]
         public ActionResult Verify(Login login)
         {
+           
             Count();
             Session["Name"] = login.Name;
             connectionstring();
@@ -164,7 +169,8 @@ namespace FYP_App.Controllers
             ViewBag.Account_Status = result;
             ViewBag.Total_Complaint_Status = result2;
             ViewBag.Solved_Complaint_Status = result3;
-
+            
+          
             return View();
         }
         #endregion
@@ -172,9 +178,12 @@ namespace FYP_App.Controllers
         public ActionResult Logout()
 
         {
-            Session["Name"] = null;
 
-            Session.RemoveAll();
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            Response.Cache.SetExpires(DateTime.UtcNow.AddHours(-1));
+            Response.Cache.SetNoStore();
+            FormsAuthentication.SignOut();
+            Session.Abandon();
             return   RedirectToAction("Login");
         }
 

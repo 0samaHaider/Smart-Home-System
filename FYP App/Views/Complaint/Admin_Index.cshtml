@@ -94,8 +94,26 @@
                         @Html.DisplayFor(modelItem => item.User_Name)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Status)
-                    </td>
+                        @if (item.Status == "Solved")
+                        {
+                                       <h4>
+                                    <span class="badge bg-success">
+                                    @Html.DisplayFor(modelItem => item.Status)
+                                    </span>
+                                    </h4>
+                                    }
+                                    else
+                                    {
+                    <h5>
+                        <span class="badge  bg-warning text-dark">
+                            @Html.DisplayFor(modelItem => item.Status)
+
+                        </span>
+
+                    </h5>
+
+                                    }
+                        </td>
 
                     <td>
                         <!--       <a href="@Url.Action("Details","Complaint", new { id = item.Complaint_ID })" class="btn btn-mini btn-info icon-edit bigger-10"><img src="https://img.icons8.com/ultraviolet/24/000000/ring-details.png" /></a> | -->

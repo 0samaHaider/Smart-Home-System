@@ -10,7 +10,9 @@ namespace FYP_App.App_Start
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new HandleErrorAttribute());
+            
+            
+                filters.Add(new HandleErrorAttribute());
         }
     }
 }

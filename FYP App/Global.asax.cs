@@ -10,8 +10,18 @@ namespace FYP_App
 {
     public class MvcApplication : System.Web.HttpApplication
     {
+        protected void Application_BeginRequest()
+        {
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            Response.Cache.SetExpires(DateTime.UtcNow.AddHours(-1));
+            Response.Cache.SetNoStore();
+        }
+        HttpContext ctx = HttpContext.Current;
+
         protected void Application_Start()
         {
+            
+            
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
 
             AreaRegistration.RegisterAllAreas();

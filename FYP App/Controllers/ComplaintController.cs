@@ -149,15 +149,23 @@ namespace FYP_App.Controllers
             {
                 using (DbModel1s db1 = new DbModel1s())
                 {
-                    Name = Session["Name"].ToString();
-                    RetrieveUserInfo(Name);
-                    var drafts = db1.Complaint_DB.Where(d => d.User_Email == Name).ToList().OrderByDescending(d => d.Complaint_ID).ToPagedList(i ?? 1, 5); 
-                    return View(drafts);
+                    if (Session["Name"] == null)
+                    {
+                        return RedirectToAction("LogIn", "Login");
+
+                    }
+                    else
+                    {
+                        Name = Session["Name"].ToString();
+                        RetrieveUserInfo(Name);
+                        var drafts = db1.Complaint_DB.Where(d => d.User_Email == Name).ToList().OrderByDescending(d => d.Complaint_ID).ToPagedList(i ?? 1, 5);
+                        return View(drafts);
+                    }
                 }
             }
             catch
             {
-                return RedirectToAction("Login");
+                return RedirectToAction("LogIn", "Login"); 
             }
         }
         #endregion

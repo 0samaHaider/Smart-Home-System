@@ -96,7 +96,26 @@
                     @Html.DisplayFor(modelItem => item.User_Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Status)
+                    @if (item.Status == "Solved")
+                    {
+                        <h4>
+                            <span class="badge bg-success">
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </span>
+                        </h4>
+
+                    }
+                    else
+                    {
+                        <h5>
+                            <span class="badge  bg-warning ">
+                                @Html.DisplayFor(modelItem => item.Status)
+
+                            </span>
+
+                        </h5>
+
+                    }
                 </td>
 
                 <td>

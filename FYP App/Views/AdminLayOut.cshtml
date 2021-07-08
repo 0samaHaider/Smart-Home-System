@@ -455,7 +455,13 @@ body {
 
 </head>
 <body>
-   
+   @if (Session["Name"] == null)
+   {
+       Response.Redirect("~/Login/login");
+
+       
+
+   }
     <!--<div class="loader">-->
         @*<div class="spinner-grow text-dark"></div>*@
            <!--<img src="~/Content/200.gif" alt="Loading..." />

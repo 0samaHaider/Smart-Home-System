@@ -83,11 +83,11 @@
 
         @foreach (var item in Model)
         {
-            <script>debugger</script>
             <tbody id="myTable">
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ID)
+                    <td >
+                        
+                            @Html.DisplayFor(modelItem => item.ID)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Name)
@@ -102,8 +102,28 @@
                         @Html.DisplayFor(modelItem => item.Password)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Status)
-                    
+
+                        @if (item.Status == "Approved")
+                        {
+                            <h4>
+                                <span class="badge bg-success">
+                                    @Html.DisplayFor(modelItem => item.Status)
+                                </span>
+                            </h4>
+
+                        }
+                        else
+                        {
+                            <h5>
+                                <span class="badge bg-danger">
+                                    @Html.DisplayFor(modelItem => item.Status)
+                                </span>
+                            </h5>
+
+                        }
+
+
+
                     </td>
                         @*<td>
                 @Html.Raw("<input type='button'value=Edit  onclick='edit(" + item.ID + ")';>")
