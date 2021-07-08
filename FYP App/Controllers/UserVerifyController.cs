@@ -150,6 +150,8 @@ namespace FYP_App.Controllers
             {
 
                 return Json("error");
+                Response.Write("<script>alert('Data inserted successfully')</script>");
+
             }
 
         }

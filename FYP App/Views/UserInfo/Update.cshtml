@@ -78,22 +78,34 @@
         var Phone = $("#Phone").val();
         var Status = $("#Status").val();
         var insertem = { "ID": ID, "Name": Name, "Password": Password, "Phone": Phone, "Status": Status, "Email": Email };
+        if (confirm("Are You Sure to Update This ?") == true) {
 
-        $.post('/UserInfo/Update', insertem
-            function (data) { if (data) { location = location.href; } }, 'json');
-
-        confirm("Are You Sure to Update This ?");
-    } $.ajax({
-
-        type: "POST",
-        url: "/Test/Index",
-        data: myformdata,
-        success: function () {
-            $("#loaderDiv").hide();
-            $("#myModal").modal("hide");
-
+            $.post('/UserInfo/Update', insertem,
+                function (data) { if (data) { location = location.href; } },
+                success = console.log("s")
+                , 'json')
+            .fail(function () {
+                alert("Invalid Entry, Please Check your entries");
+            })
         }
+     else {
+        return false;
+    }
+       
+       
 
-    })
+    }
+   /* $.ajax({*/
+
+    //    type: "POST",
+    //    url: "/Test/Index",
+    //    data: myformdata,
+    //    success: function () {
+    //        $("#loaderDiv").hide();
+    //        $("#myModal").modal("hide");
+
+    //    }
+
+    //})
 
 </script>

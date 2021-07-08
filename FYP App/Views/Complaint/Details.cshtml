@@ -84,13 +84,18 @@
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-<h2>
-    &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;ℂ𝕠𝕞𝕡𝕝𝕒𝕚𝕟𝕥 #    @Html.DisplayFor(model => model.Complaint_ID)
-    &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;   &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;   &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp; 𝕀𝕤𝕤𝕦𝕖 𝕕𝕒𝕥𝕖 :  @Html.DisplayFor(model => model.Date)
-</h2>
+
 
         <div class="container">
+            <h2>
+                ℂ𝕠𝕞𝕡𝕝𝕒𝕚𝕟𝕥 #    @Html.DisplayFor(model => model.Complaint_ID)
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                𝕀𝕤𝕤𝕦𝕖 𝕕𝕒𝕥𝕖 :  @Html.DisplayFor(model => model.Date)
+            </h2>
+            <hr />
             <form>
                 <div class="row">
                     <div class="col-25">
