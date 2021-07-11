@@ -455,17 +455,17 @@ body {
 
 </head>
 <body>
-   @if (Session["Name"] == null)
-   {
-       Response.Redirect("~/Login/login");
+    @if (Session["Name"] == null)
+    {
+        Response.Redirect("~/Login/login");
 
-       
 
-   }
-    <!--<div class="loader">-->
-        @*<div class="spinner-grow text-dark"></div>*@
-           <!--<img src="~/Content/200.gif" alt="Loading..." />
-    </div>-->
+
+    }
+
+    <div class="loader">
+        <img src="~/Content/200.gif" alt="Loading..." />
+    </div>
     <svg style="display:none;">
         <symbol id="down" viewBox="0 0 16 16">
             <polygon points="3.81 4.38 8 8.57 12.19 4.38 13.71 5.91 8 11.62 2.29 5.91 3.81 4.38" />
@@ -543,7 +543,7 @@ body {
                     <h3>Admin DashBoard</h3>
                 </li>
                 <li>
-                    <a href="@Url.Action( "Admin" ,"UserInfo")">
+                    <a href="@Url.Action( "Admin_Dashboard" ,"Sensor")">
                         <svg>
                             <use xlink:href="#pages"></use>
                         </svg>

@@ -69,6 +69,7 @@
 
 </div>
 <script type="text/javascript">
+
     function savedetails() {
         var ID = $("#ID").val();
         var Name = $("#Name").val();
@@ -77,29 +78,44 @@
         var Password = $("#Password").val();
         var Status = $("#Status").val();
         var insertem = { "ID": ID, "Name": Name, "Email": Email, "Phone": Phone, "Password": Password, "Status": Status };
-        debugger
+
         $.post('/UserVerify/Creates', insertem,
-            function (data) { if (data) { location = location.href; } }, 'json');
+            function (data = insertem) {
+                debugger
+                console.log(data)
+                alert(data);
+                if (data.post == true) { location = location.href; } else {
+                  
+                }}
+          
+            , 'json');
 
         confirm("Are You Sure to Submit This ?");
-            //function (data) {
-            //    if (data.post == true) { location = location.href; }
-               
-            //}, 'json');
+        //function (data) {
+        //    if (data.post == true) { location = location.href; }
+
+        //}, 'json');
 
     }
-    //$.ajax({
+        debugger
+        //if (confirm("Are You Sure to Add This ?") == true) {
 
-    //    type: "POST",
-    //    url: "/UserVerify/Creates",
-    //    data: myformdata,
-    //    success: function () {
-    //        $("#loaderDiv").hide();
-    //        $("#myModal").modal("hide");
+        //    $.post('/UserVerify/Creates', insertem,
+        //        function (data) { if (data) { location = location.href; } },
+        //        success = console.log("saved")
+        //        , 'json')
+        //        .fail(function () {
+        //            alert("Invalid Entry, Please Check your entries");
+        //        })
+        //}
+        //else {
+        //    return false;
+        //}
 
-    //    }
 
-    //})
+
+    
+
 </script>
 <script src="custom.js"></script>
 <script>

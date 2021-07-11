@@ -84,72 +84,74 @@
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-        <h2>
-            &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;ℂ𝕠𝕞𝕡𝕝𝕒𝕚𝕟𝕥 #    @Html.DisplayFor(model => model.Complaint_ID)
-            &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;   &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;   &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp; 𝕀𝕤𝕤𝕦𝕖 𝕕𝕒𝕥𝕖 :  @Html.DisplayFor(model => model.Date)
-        </h2>
+      
+<div class="container">
+    <h2>
+        ℂ𝕠𝕞𝕡𝕝𝕒𝕚𝕟𝕥 #    @Html.DisplayFor(model => model.Complaint_ID)
+        &nbsp;&nbsp;  &nbsp;&nbsp;   &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp; 
+        &nbsp;&nbsp;&nbsp;&nbsp; 𝕀𝕤𝕤𝕦𝕖 𝕕𝕒𝕥𝕖 :  @Html.DisplayFor(model => model.Date)
+    </h2>
 
-        <div class="container">
-            <form>
-                <div class="row">
-                    <div class="col-25">
-                        <label for="fname">User Name</label>
-                    </div>
-                    <div class="col-75">
+    <form>
 
-                        @Html.TextBoxFor(model => model.User_Name, new { @class = "form-control", @readonly = "readonly" })
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-25">
-                        <label for="lname">User Email</label>
-                    </div>
-                    <div class="col-75">
-                        @Html.TextBoxFor(model => model.User_Email, new { @class = "form-control", @readonly = "readonly" })
+        <div class="row">
+            <div class="col-25">
+                <label for="fname">User Name</label>
+            </div>
+            <div class="col-75">
 
-
-
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-25">
-                        <label for="fname">Complaint Status</label>
-                    </div>
-                    <div class="col-75">
-
-                        @Html.TextBoxFor(model => model.Status, new { @class = "form-control", @readonly = "readonly" })
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-25">
-                        <label for="email">Complaint Subject </label>
-                    </div>
-                    <div class="col-75">
-                        @Html.TextBoxFor(model => model.Subject, new { @class = "form-control", @readonly = "readonly" })
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-25">
-                        <label for="feed_back">Complaint Description</label>
-                    </div>
-                    <div class="col-75">
-
-                        @Html.TextAreaFor(model => model.Description, new { @style = "height:200px", @readonly = "readonly" })
-                    </div>
-                </div>
-
-
-                <div>
-                    <div class="row">
-                        <a href="@Url.Action("Admin_Index","Complaint")" class="btn btn-mini btn-info icon-edit bigger-07"><img src="https://img.icons8.com/flat_round/30/000000/back--v1.png" />Back to List </a>
-
-                    </div>
-                </div>
-
-            </form>
+                @Html.TextBoxFor(model => model.User_Name, new { @class = "form-control", @readonly = "readonly" })
+            </div>
         </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="lname">User Email</label>
+            </div>
+            <div class="col-75">
+                @Html.TextBoxFor(model => model.User_Email, new { @class = "form-control", @readonly = "readonly" })
+
+
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="fname">Complaint Status</label>
+            </div>
+            <div class="col-75">
+
+                @Html.TextBoxFor(model => model.Status, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="email">Complaint Subject </label>
+            </div>
+            <div class="col-75">
+                @Html.TextBoxFor(model => model.Subject, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-25">
+                <label for="feed_back">Complaint Description</label>
+            </div>
+            <div class="col-75">
+
+                @Html.TextAreaFor(model => model.Description, new { @style = "height:200px", @readonly = "readonly" })
+            </div>
+        </div>
+
+
+        <div>
+            <div class="row">
+                <a href="@Url.Action("Admin_Index","Complaint")" class="btn btn-mini btn-info icon-edit bigger-07"><img src="https://img.icons8.com/flat_round/30/000000/back--v1.png" />Back to List </a>
+
+            </div>
+        </div>
+
+    </form>
+</div>
     }
 </body>
 

@@ -91,7 +91,7 @@ namespace FYP_App.Controllers
 
             else if (login.Name == "autoislamabad@gmail.com" && login.Password == "olx")
             {
-                return RedirectToAction("Admin", "UserInfo", null);
+                return RedirectToAction("Admin_Dashboard", "Sensor", null);
 
                // return RedirectToAction("Admin");
 

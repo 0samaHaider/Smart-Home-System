@@ -52,13 +52,18 @@ namespace FYP_App.Controllers
                     db.SaveChanges();
                     Email_Sender email_Sender = new Email_Sender();
                     email_Sender.Complaint_Email(complaint.User_Email, complaint.Complaint_ID, complaint.Status);               
-                    return RedirectToAction("Admin_Index");
                 }
+                return RedirectToAction("Admin_Index");
+
             }
+
             catch
             {
-                return View();
+                return RedirectToAction("Admin_Index");
+
+              
             }
+           // return vi("Admin_Index");
         }
 
         #endregion

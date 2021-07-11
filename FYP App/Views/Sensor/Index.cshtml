@@ -161,7 +161,7 @@
                         <div class="card-body">
                             <div class="media d-flex">
                                 <div class="align-self-center">
-                                    <i class="icon-user success font-large-2 float-right"></i>
+                                    <img src="https://img.icons8.com/material-rounded/55/000000/body.png" />
                                 </div>
                                 <div class="media-body text-right">
                                     <h3>
@@ -204,6 +204,33 @@
                                     </h3>
 
                                     <span><b>Water Availability in Tank</b></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="media d-flex">
+                                <div class="align-self-center">
+                                    <img src="https://img.icons8.com/material-rounded/55/000000/body.png" />
+                                </div>
+                                <div class="media-body text-right">
+                                    <h3>
+                                        @foreach (var item in Model)
+                                        {
+                                            @Html.DisplayFor(modelItem => item.Body_Detected)
+                                            
+
+                                        }
+                                       
+
+                                    </h3>
+
+                                    <span><b>Body Detected at Entrance </b></span>
                                 </div>
                             </div>
                         </div>
@@ -370,6 +397,41 @@
                             <div class="align-self-center">
                                 <img src="https://img.icons8.com/ios/58/000000/pump.png" />
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 col-12">
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-body">
+                        <div class="media d-flex">
+                            <div class="media-body text-left">
+                                <h3 class="success">
+                                    @foreach (var item in Model)
+                                    {
+                                        @Html.DisplayFor(modelItem => item.Door)
+                                    }
+
+                                </h3>
+                                <span><b> Entrance Door Status</b></span>
+                            </div>
+                            @foreach (var item in Model)
+                            {
+                                if (item.Door == "Open")
+                                {
+                        <div class="align-self-center">
+                            <img src="https://img.icons8.com/ios/58/000000/door-opened.png" />
+                        </div>
+                                }
+                                else
+                                {
+                                    <div class="align-self-center">
+                                        <img src="https://img.icons8.com/ios/58/000000/door.png" />
+                                    </div>
+                                }
+                            }
                         </div>
                     </div>
                 </div>

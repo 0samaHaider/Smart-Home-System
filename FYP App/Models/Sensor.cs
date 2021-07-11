@@ -23,6 +23,10 @@ namespace FYP_App.Models
         public string WaterAvailable { get; set; }
 
         public string WaterOUTPUT { get; set; }
+        public string Body_Detected { get; set; }
+        public string Door { get; set; }
+
+
 
     }
 }

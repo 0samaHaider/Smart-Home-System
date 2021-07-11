@@ -9,6 +9,8 @@
 <br />
 
 <div class="form-group">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
     <label class=" font-weight-bold">User's Name</label><br />
     @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
     @Html.ValidationMessageFor(model => model.Name)
@@ -73,29 +75,91 @@
 
         var ID = $("#ID").val();
         var Name = $("#Name").val();
+        var Email = $("#Email").val();
+        var Password = $("#Password").val();
+        var Phone = $("#Phone").val();
+        var Status = $("#Status").val();
+        var insertem = { "ID": ID, "Name": Name, "Password": Password, "Phone": Phone, "Status": Status, "Email": Email };
+        if (confirm("Are You Sure to Update This ?") == true) {
+            debugger
+            $.post('/UserVerify/Editt', insertem,
+                function (data = insertem) {
+                    console.log(data)
+                    alert(data);
+                    if (data) { location = location.href; }
+                },
+                success = console.log("s")
+                , 'json')
+                .fail(function () {
+                    alert("Invalid Entry, Please Check your entries");
+                })
+        }
+        else {
+            return false;
+        }
+
+
+
+    }
+    /* $.ajax({*/
+
+    //    type: "POST",
+    //    url: "/Test/Index",
+    //    data: myformdata,
+    //    success: function () {
+    //        $("#loaderDiv").hide();
+    //        $("#myModal").modal("hide");
+
+    //    }
+
+    //})
+
+</script>
+@*<script type="text/javascript">
+    function savedetails() {
+
+        var ID = $("#ID").val();
+        var Name = $("#Name").val();
         var Password = $("#Password").val();
         var Phone = $("#Phone").val();
         var Status = $("#Status").val();
         var Email = $("#Email").val();
 
         var insertem = { "ID": ID, "Name": Name, "Password": Password, "Phone": Phone, "Status": Status, "Email": Email };
-
-        $.post('/UserVerify/Editt', insertem,
-            function (data) { if (data) { location = location.href; } }, 'json');
-
-        confirm("Are You Sure to Update This ?");
-    } $.ajax({
-
-        type: "POST",
-        url: "/Test/Index",
-        data: myformdata,
-        success: function () {
-            $("#loaderDiv").hide();
-            $("#myModal").modal("hide");
-
+        if (confirm("Are You Sure to Update This ?") == true) {
+            debugger
+            $.post('/UserVerify/Editt', insertem,
+                function (data) { if (data) { location = location.href; } },
+                success = console.log("s")
+                , 'json')
+                .fail(function () {
+                    alert("Invalid Entry, Please Check your entries");
+                })
+        }
+        else {
+            return false;
         }
 
-    })
 
-</script>
+
+    }
+
+    //    $.post('/UserVerify/Editt', insertem,
+    //        function (data) { if (data) { location = location.href; } }, 'json');
+
+    //    confirm("Are You Sure to Update This ?");
+    //} $.ajax({
+
+    //    type: "POST",
+    //    url: "/Test/Index",
+    //    data: myformdata,
+    //    success: function () {
+    //        $("#loaderDiv").hide();
+    //        $("#myModal").modal("hide");
+
+    //    }
+
+    //})
+
+</script>*@
 

@@ -47,6 +47,35 @@ namespace FYP_App.Controllers
             }
             return View(list);
         }
+        public ActionResult Admin_Dashboard()
+        {
+            DbModel1s db1 = new DbModel1s();
+            DbModels db2 = new DbModels();
+            ViewBag.Countapproveduser = db2.Sign_Up.Count(a => a.Status == "Approved");
+            ViewBag.Countuser = db2.Sign_Up.Count();
+            ViewBag.Counttotal = db1.Complaint_DB.Count();
+            ViewBag.Count = db1.Complaint_DB.Count(a => a.Status == "Solved");
+            client = new FireSharp.FirebaseClient(config);
+            FirebaseResponse response = client.Get("Sensors");
+            dynamic data = JsonConvert.DeserializeObject<dynamic>(response.Body);
+            var list = new List<Sensor>();
+            try
+            {
+                foreach (var item in data)
+                {
+
+                    list.Add(JsonConvert.DeserializeObject<Sensor>(((JProperty)item).Value.ToString()));
+                }
+
+
+
+            }
+            catch
+            {
+                ModelState.AddModelError(string.Empty, "No Data Here");
+            }
+            return View(list);
+        }
         #endregion
     }
 }

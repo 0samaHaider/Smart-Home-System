@@ -144,14 +144,15 @@ namespace FYP_App.Controllers
                 DbModels sd = new DbModels();
                 sd.Sign_Up.Add(sign_Up);
                 sd.SaveChanges();
-                return Json(sign_Up, JsonRequestBehavior.AllowGet);
+                return Json("Account Created Successfully !!", JsonRequestBehavior.AllowGet);
             }
             else
             {
 
-                return Json("error");
-                Response.Write("<script>alert('Data inserted successfully')</script>");
 
+
+
+                return Json("Invalid Entry, Please Check your entries");
             }
 
         }
@@ -174,26 +175,41 @@ namespace FYP_App.Controllers
         [HttpPost]
         public JsonResult Editt(Sign_Up emp)
         {
-            DbModels sd = new DbModels();
-            int empp = emp.ID;
-            Sign_Up emptb = sd.Sign_Up.Where(x => x.ID == empp).FirstOrDefault();
-            Crudclass empclass = new Crudclass();
-            emptb.Name = emp.Name;
-            emptb.Password = emp.Password;
-            emptb.Phone = emp.Phone;
-            emptb.Status = emp.Status;
-            emptb.Email = emp.Email;
-            sd.SaveChanges();
-            Email_Sender email_Sender = new Email_Sender();
-            email_Sender.Profile_Update(emptb.Email);
-            return Json(emptb, JsonRequestBehavior.AllowGet);
+            if (ModelState.IsValid)
+            {
+
+                DbModels sd = new DbModels();
+                int empp = emp.ID;
+                Sign_Up emptb = sd.Sign_Up.Where(x => x.ID == empp).FirstOrDefault();
+                Crudclass empclass = new Crudclass();
+                emptb.Name = emp.Name;
+                emptb.Password = emp.Password;
+                emptb.Phone = emp.Phone;
+                emptb.Status = emp.Status;
+                emptb.Email = emp.Email;
+                sd.SaveChanges();
+                Email_Sender email_Sender = new Email_Sender();
+                email_Sender.Profile_Update(emptb.Email);
+                return Json("Account Updated Successfully !!", JsonRequestBehavior.AllowGet);
+
+            }
+            else
+            {
+
+
+
+
+
+
+                return Json("Invalid Entry, Please Check your entries");
+            }
         }
-        #endregion
+            #endregion
 
 
         
 
-    }
+        }
 }
 
 
