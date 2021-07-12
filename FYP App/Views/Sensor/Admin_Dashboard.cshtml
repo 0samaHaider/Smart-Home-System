@@ -61,7 +61,7 @@
 
     <div class="jumbotron">
         <div class="row w-100">
-
+          
             <div class="col-md-3">
                 <div class="card border-info mx-sm-1 p-3">
                     <div class="card border-info shadow text-info p-3 my-card"><span class="fa fa-user" aria-hidden="true"></span></div>
@@ -154,13 +154,27 @@
                             <div class="card-body">
                                 <div class="media d-flex">
                                     <div class="align-self-center">
-                                        <i class="fa fa-thermometer" style="font-size:48px;color:red"></i>
+                                        @foreach (var item in Model)
+                                                    {
+                                                        string a = "25";
+
+
+                                                        if (String.Compare(item.Temperature, a) >0)
+                                                        {
+                                            <i class="fa fa-thermometer" style="font-size:48px;color:red"></i>
+                                                        }
+                else
+                {
+                                    <img src="https://img.icons8.com/ios/50/000000/thermometer-automation.png" />
+                }
+
+                                                }
                                     </div>
                                     <div class="media-body text-right">
                                         <h3>
                                             @foreach (var item in Model)
                                             {
-                                                @Html.DisplayFor(modelItem => item.Temperature)
+                                            @Html.DisplayFor(modelItem => item.Temperature)
                                             }
                                             °C
                                         </h3>
@@ -178,14 +192,31 @@
                             <div class="card-body">
                                 <div class="media d-flex">
                                     <div class="align-self-center">
-                                        <i class='fas fa-water' style='font-size:48px;color:red'></i>
+
+                                        @foreach (var item in Model)
+                                        {
+
+                                            string a = "88";
+
+
+                                            if (item.Humidity >= 88)
+                                            {
+                                                <i class='fas fa-water' style='font-size:48px;color:red'></i>
+                                            }
+                                            else
+                                            {
+                                                <i class='fas fa-water' style='font-size:48px;'></i>
+                                            }
+
+                                        }
                                     </div>
                                     <div class="media-body text-right">
+
                                         <h3>
                                             @foreach (var item in Model)
                                             {
 
-                                                @Html.DisplayFor(modelItem => item.Humidity)
+                                            @Html.DisplayFor(modelItem => item.Humidity)
 
                                             }
                                             %
@@ -203,13 +234,28 @@
                             <div class="card-body">
                                 <div class="media d-flex">
                                     <div class="align-self-center">
-                                        <img src="https://img.icons8.com/metro/60/000000/smoke-explosion.png" />
+                                        @foreach (var item in Model)
+                                        {
+
+                                            string a = "88";
+
+
+                                            if (item.Smoke == "Not Detected")
+                                            {
+                                                <img src="https://img.icons8.com/metro/60/000000/smoke-explosion.png" />
+                                            }
+                                            else
+                                            {
+                                                <img src="https://img.icons8.com/fluent/48/000000/smoke-explosion.png" />
+                                            }
+
+                                        }
                                     </div>
                                     <div class="media-body text-right">
                                         <h3>
                                             @foreach (var item in Model)
                                             {
-                                                @Html.DisplayFor(modelItem => item.Smoke)
+                                            @Html.DisplayFor(modelItem => item.Smoke)
 
                                             }
                                         </h3>
@@ -227,14 +273,28 @@
 ">
                                 <div class="media d-flex">
                                     <div class="align-self-center">
+                                        @foreach (var item in Model)
+                                        {
 
-                                        <img src="https://img.icons8.com/wired/58/000000/sun.png" />
+                                          
+
+                                            if (item.Light == "Detected")
+                                            {
+                                                  <img src="https://img.icons8.com/ios-filled/52/fa314a/sun.png" />
+                                            }
+                                            else
+                                            {
+                                                  <img src="https://img.icons8.com/wired/58/000000/sun.png" />
+
+                                            }
+
+                                        }
                                     </div>
                                     <div class="media-body text-right">
                                         <h3>
                                             @foreach (var item in Model)
                                             {
-                                                @Html.DisplayFor(modelItem => item.Light)
+                                            @Html.DisplayFor(modelItem => item.Light)
                                             }
                                         </h3>
                                         <span><b>Light Sensor</b></span>
@@ -255,7 +315,22 @@
                             <div class="card-body">
                                 <div class="media d-flex">
                                     <div class="align-self-center">
-                                        <img src="https://img.icons8.com/dusk/60/000000/hygrometer.png" />
+                                        @foreach (var item in Model)
+                                        {
+
+
+
+                                            if (item.MoistureAvailable == "Yes")
+                                            {
+                                            <img src="https://img.icons8.com/dusk/60/000000/hygrometer.png" />
+                                            }
+                                            else
+                                            {
+                                           <img src="https://img.icons8.com/dotty/60/000000/hygrometer.png" />
+
+                                            }
+
+                                        }
                                     </div>
                                     <div class="media-body text-right">
                                         <h3>
@@ -264,7 +339,7 @@
                                             {
 
 
-                                                @Html.DisplayFor(modelItem => item.MoistureAvailable)
+                                            @Html.DisplayFor(modelItem => item.MoistureAvailable)
                                             }
                                         </h3>
                                         <span><b>Moisture in Plants</b></span>
@@ -307,7 +382,23 @@
                             <div class="card-body">
                                 <div class="media d-flex">
                                     <div class="align-self-center">
-                                        <img src="https://img.icons8.com/dusk/50/000000/chemical-storage-tank.png" />
+                                        @foreach (var item in Model)
+                                        {
+
+
+
+                                            if (item.WaterAvailable == "YES")
+                                            {
+                                                <img src="https://img.icons8.com/dusk/50/000000/chemical-storage-tank.png" />
+
+                                            }
+                                            else
+                                            {
+                                              <img src="https://img.icons8.com/ios/50/000000/chemical-storage-tank.png" />
+
+                                            }
+
+                                        }
                                     </div>
                                     <div class="media-body text-right">
                                         <h3>
@@ -332,7 +423,23 @@
                             <div class="card-body">
                                 <div class="media d-flex">
                                     <div class="align-self-center">
-                                        <img src="https://img.icons8.com/material-rounded/55/000000/body.png" />
+                                        @foreach (var item in Model)
+                                        {
+
+
+
+                                            if (item.Body_Detected == "No")
+                                            {
+                                                <img src="https://img.icons8.com/material-rounded/55/000000/body.png" />
+
+                                            }
+                                            else
+                                            {
+                                                <img src="https://img.icons8.com/ios-filled/66/fa314a/body-type-short.png" />
+
+                                            }
+
+                                        }
                                     </div>
                                     <div class="media-body text-right">
                                         <h3>
@@ -421,7 +528,22 @@
                                         <span><b>Fan Status</b></span>
                                     </div>
                                     <div class="align-self-center">
-                                        <img src="https://img.icons8.com/officel/65/000000/shit-hits-fan.png" />
+                                        @foreach (var item in Model)
+                                        {
+                                            if (item.TempOutput == "OFF")
+                                            {
+                                                <div class="align-self-center">
+                                                    <img src="https://img.icons8.com/fluent/65/000000/fan.png" />
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="align-self-center">
+                                                    <img src="https://img.icons8.com/officel/65/000000/shit-hits-fan.png" />
+                                                </div>
+                                            }
+                                        }
+
                                     </div>
                                 </div>
                             </div>
@@ -444,7 +566,22 @@
                                         <span><b>Exhaust Fan Status</b></span>
                                     </div>
                                     <div class="align-self-center">
-                                        <img src="https://img.icons8.com/nolan/68/fan-speed.png" />
+                                        @foreach (var item in Model)
+                                        {
+                                            if (item.HumidityOutput == "ON")
+                                            {
+                                        <div class="align-self-center">
+                                            <img src="https://img.icons8.com/nolan/68/fan-speed.png" />
+                                        </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="align-self-center">
+                                                    <img src="https://img.icons8.com/ios/68/000000/fan-head.png" />
+                                                </div>
+                                            }
+                                        }
+                                       
                                     </div>
                                 </div>
                             </div>
@@ -466,7 +603,23 @@
                                         <span><b>Smoke Alarm</b></span>
                                     </div>
                                     <div class="align-self-center">
+                                        @foreach (var item in Model)
+                                        {
+                                            if (item.SmokeOUTPUT == "OFF")
+                                            {
+                                                <div class="align-self-center">
+                                                    <img src="https://img.icons8.com/material-rounded/65/000000/bell--v2.png" />
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                    <div class="align-self-center">
                                         <img src="https://img.icons8.com/cute-clipart/65/000000/alarm.png" />
+                                    </div>
+                                            }
+                                        }
+
+                                      
                                     </div>
                                 </div>
                             </div>
@@ -488,7 +641,21 @@
                                         <span><b>Lights</b> </span>
                                     </div>
                                     <div class="align-self-center">
-                                        <img src="https://img.icons8.com/dusk/64/000000/light.png" />
+                                        @foreach (var item in Model)
+                                        {
+                                            if (item.LightOUTPUT == "OFF")
+                                            {
+                                                <div class="align-self-center">
+                                                    <img src="https://img.icons8.com/dotty/60/000000/reflector-bulb.png" />
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="align-self-center">
+                                                    <img src="https://img.icons8.com/color/60/000000/reflector-bulb.png" />                                                </div>
+                                            }
+                                        }
+
                                     </div>
                                 </div>
                             </div>
@@ -513,7 +680,21 @@
                                         <span><b>Irrigation Status</b></span>
                                     </div>
                                     <div class="align-self-center">
-                                        <img src="https://img.icons8.com/ultraviolet/60/000000/plant-under-rain.png" />
+                                        @foreach (var item in Model)
+                                        {
+                                            if (item.MoisOUTPUT == "ON")
+                                            {
+                                        <div class="align-self-center">
+                                            <img src="https://img.icons8.com/ultraviolet/60/000000/plant-under-rain.png" />
+                                        </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="align-self-center">
+                                                    <img src="https://img.icons8.com/carbon-copy/60/000000/plant-under-rain.png" />
+                                                </div>
+                                            }
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -536,7 +717,21 @@
                                         <span><b>Control Room Alarm</b></span>
                                     </div>
                                     <div class="align-self-center">
-                                        <img src="https://img.icons8.com/cute-clipart/58/000000/alarm.png" />
+                                        @foreach (var item in Model)
+                                        {
+                                            if (item.MotionOutput == "ON")
+                                            {
+                                        <div class="align-self-center">
+                                            <img src="https://img.icons8.com/cute-clipart/58/000000/alarm.png" />
+                                        </div>
+                                            }
+                                            else
+                                            {
+                                    <div class="align-self-center">
+                                        <img src="https://img.icons8.com/material-rounded/65/000000/bell--v2.png" />
+                                    </div>
+                                            }
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -559,7 +754,22 @@
                                         <span><b>Water Pump Status</b></span>
                                     </div>
                                     <div class="align-self-center">
-                                        <img src="https://img.icons8.com/ios/58/000000/pump.png" />
+                                        @foreach (var item in Model)
+                                        {
+                                            if (item.WaterOUTPUT == "OFF")
+                                            {
+                                        <div class="align-self-center">
+                                            <img src="https://img.icons8.com/ios/58/000000/pump.png" />
+                                        </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="align-self-center">
+                                                    <img src="https://img.icons8.com/ios/58/000000/pump.png" />
+                                                </div>
+                                            }
+                                        }
+                                       
                                     </div>
                                 </div>
                             </div>
